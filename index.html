@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
 <header class = "header">
     <div class="containerForHeadingAndTextInHeader">
-<h1 class="firstHeading">Заголовок 1</h1>
+<h1 class="firstHeading">Заголовок h1</h1>
     <p class = 'text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
         <img src = "image.png" alt="road">
@@ -16,35 +19,72 @@
 </header>
 <main>
     <div>
-<h2>Заголовок 2</h2>
+<h2>Заголовок h2</h2>
     <form class="form">
-        <label class="containerForInputOfRange">Выберите диапазон
-            <input type = "text">
-        </label>
-        <label class="containerForInputOfSelect">Выберите select
-            <select required name = "select">
+
+       <div class="mainContainerForInputOfRange">
+           <label class="containerForInputOfRange">
+            Выберите диапазон
+           </label>
+            <input class="inputForRangeFromZero" type = "text" placeholder="от 0">
+            <input class="inputForRangeTo" type = "text" placeholder="до 100">
+            <div>I don`t know</div>
+
+       </div>
+      <div class = "mainContainerForInputOfSelect">
+       <label class="containerForInputOfSelect">
+            Выберите select
+       </label>
+            <select  required name = "select">
                 <option>Option</option>
                 <option>Vite</option>
                 <option>Webpack</option>
                 <option>Gulp</option>
             </select>
-        </label>
-        <label class="containerForRadio">Выберите radio
+      </div>
+            <div class="mainContainerForRadio">
+            <label class="containerForRadio">
+            Выберите radio
+            </label>
+                <label class="firstInputForRadio">
+                <input type = "radio">
+                Javascript
+                </label>
+
+            <label class="secondInputForRadio">
             <input type = "radio">
+              PHP
+            </label>
+                <label class="thirdInputForRadio">
             <input type = "radio">
+                C#
+                </label>
+            </div>
+            <div class="mainContainerForInputOfName">
+        <label  class="containerForInputOfName">
+            Введите ФИО
         </label>
-        <label  class="containerForInputOfName">Введите ФИО
             <input class = "inputForName" type = "text" placeholder="Введите ФИО">
+            </div>
+            <div class="mainContainerForAge">
+        <label  class="containerForAge">
+            Введите возраст в цифрах
         </label>
-        <label  class="containerForAge">Введите возраст в цифрах
             <input type = "number" placeholder="Placeholder">
-        </label>
-        <label class="containerForRequiredCheckbox">Обязательный checkbox
+            </div>
+            <div class="mainContainerForRequiredCheckbox">
+        <label class="containerForRequiredCheckbox">
             <input type = "checkbox" required>
+            Обязательный checkbox
         </label>
-        <label class="containerForNotRequiredCheckbox">Необязательный checkbox
+            </div>
+            <div class ="mainContainerForNotRequiredCheckbox">
+        <label class="containerForNotRequiredCheckbox">
             <input type = "checkbox">
+            Необязательный checkbox
         </label>
+            </div>
+
     </form>
     <button class = "button" type = "submit">Отправить</button>
     </div>
@@ -53,7 +93,7 @@
         <button class="closeBottonForPopup" type="button">X</button>
     </dialog>
     <article class = "containerForFirdHeadingAndText">
-    <h3>Заголовок 3</h3>
+    <h3>Заголовок h3</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </article>
 </main>
