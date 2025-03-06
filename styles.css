@@ -1,0 +1,11 @@
+.containerForHeadingAndTextInHeader {
+  background-color: black;
+}
+.borderline {
+    border-bottom: solid 1px black
+}
+
+.text,
+.firstHeading {
+    color: white;
+}

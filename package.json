@@ -1,0 +1,16 @@
+{
+  "name": "garaeva-r.r.-test-task-junior-frontend-developer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
