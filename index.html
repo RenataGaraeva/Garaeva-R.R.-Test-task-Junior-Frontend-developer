@@ -15,45 +15,47 @@
 
 </header>
 <main>
+    <div>
 <h2>Заголовок 2</h2>
     <form class="form">
-        <label>
+        <label class="containerForInputOfRange">Выберите диапазон
             <input type = "text">
         </label>
-        <label>
-            <input class = "inputForName" type = "text" placeholder="Введите ФИО">
-        </label>
-        <label>Выберите select
-        <select required name = "select">
-            <option>Option</option>
+        <label class="containerForInputOfSelect">Выберите select
+            <select required name = "select">
+                <option>Option</option>
                 <option>Vite</option>
                 <option>Webpack</option>
                 <option>Gulp</option>
-
-        </select>
+            </select>
         </label>
-        <label>Обязательный checkbox
+        <label class="containerForRadio">Выберите radio
+            <input type = "radio">
+            <input type = "radio">
+        </label>
+        <label  class="containerForInputOfName">Введите ФИО
+            <input class = "inputForName" type = "text" placeholder="Введите ФИО">
+        </label>
+        <label  class="containerForAge">Введите возраст в цифрах
+            <input type = "number" placeholder="Placeholder">
+        </label>
+        <label class="containerForRequiredCheckbox">Обязательный checkbox
             <input type = "checkbox" required>
         </label>
-       <label>Необязательный checkbox
-           <input type = "checkbox">
-       </label>
-        <label>Выберите radio
-            <input type = "radio">
-            <input type = "radio">
-        </label>
-        <label>
-            <input type = "number" placeholder="Введите возраст в цифрах">
+        <label class="containerForNotRequiredCheckbox">Необязательный checkbox
+            <input type = "checkbox">
         </label>
     </form>
     <button class = "button" type = "submit">Отправить</button>
+    </div>
     <dialog class="popup">
         <div>Hi!</div>
         <button class="closeBottonForPopup" type="button">X</button>
     </dialog>
+    <article class = "containerForFirdHeadingAndText">
     <h3>Заголовок 3</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
+    </article>
 </main>
 <footer class = "footer">
     <div class="borderline"></div>

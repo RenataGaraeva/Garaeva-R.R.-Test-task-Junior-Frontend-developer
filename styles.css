@@ -1,3 +1,43 @@
+.header {
+    display: flex;
+}
+
+form {
+    display: grid;
+    grid-template-areas:
+            "InputOfRange . "
+    "InputOfSelect InputOfRadio"
+    "InputOfName inputOfAge"
+    "inputForRequiredCheckbox inputForNotRequiredCheckbox";
+}
+.containerForInputOfRange {
+    grid-area: InputOfRange
+}
+
+.containerForInputOfName {
+    grid-area: InputOfName
+}
+
+.containerForInputOfSelect {
+    grid-area: InputOfSelect
+}
+
+.containerForRequiredCheckbox {
+    grid-area: inputForRequiredCheckbox
+}
+
+.containerForNotRequiredCheckbox {
+    grid-area: inputForNotRequiredCheckbox
+}
+
+.containerForRadio {
+    grid-area: InputOfRadio
+}
+
+.containerForAge {
+    grid-area: inputOfAge
+}
+
 .containerForHeadingAndTextInHeader {
   background-color: black;
 }
