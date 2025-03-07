@@ -40,30 +40,30 @@
           <div class = "containerForSignOfSelect">
             <select class = "selectOfProjectBuilders" required name = "select">
                 <option>Option</option>
-                <option>Vite</option>
-                <option>Webpack</option>
-                <option>Gulp</option>
+                <option value="Vite">Vite</option>
+                <option value="Webpack">Webpack</option>
+                <option value="Gulp">Gulp</option>
             </select>
           </div>
       </div>
-            <div class="mainContainerForRadio">
-            <label class="containerForRadio">
+            <fieldset class="mainContainerForRadio">
+            <legend class="containerForRadio">
             Выберите radio
-            </label>
+            </legend>
                 <label class="firstInputForRadio">
-                <input class = "selectOfProgrammingLanguagesJS" name = "ProgrammingLanguage" type = "radio">
+                <input class = "selectOfProgrammingLanguagesJS" value="Javascript" name = "ProgrammingLanguage" type = "radio">
                 Javascript
                 </label>
 
             <label class="secondInputForRadio">
-            <input class = "selectOfProgrammingLanguagesPHP"  name = "ProgrammingLanguage" type = "radio">
+            <input class = "selectOfProgrammingLanguagesPHP" value="PHP" name = "ProgrammingLanguage" type = "radio">
               PHP
             </label>
                 <label class="thirdInputForRadio">
-            <input class = "selectOfProgrammingLanguagesC" name = "ProgrammingLanguage" type = "radio">
+            <input class = "selectOfProgrammingLanguagesC" value="C#" name = "ProgrammingLanguage" type = "radio">
                 C#
                 </label>
-            </div>
+            </fieldset>
             <div class="mainContainerForInputOfName">
         <label  class="containerForInputOfName">
             Введите ФИО
@@ -96,13 +96,13 @@
     <button class = "button" type = "submit">Отправить</button>
     </div>
     <dialog class="popup">
-        <ul>Результат отправки!
-        <li>Диапазон</li>
-        <li>Select</li>
-        <li>Radio</li>
-        <li>ФИО</li>
-        <li>Возраст</li>
-        <li>Выбранные checkbox</li>
+        <ul>Результат отправки:
+        <li class = "submittedListItemRange"></li>
+        <li class = "submittedListItemProgramBuilder"></li>
+        <li class = "submittedListItemProgramLanguages"></li>
+        <li class = "submittedListItemName"></li>
+        <li class = "submittedListItemAge"></li>
+        <li class = "submittedListItemCheckboxes"></li>
         </ul>
         <button class="closeBottonForPopup" type="button">X</button>
     </dialog>
@@ -115,7 +115,6 @@
     <div class="borderline"></div>
     <p class = "infoOfApplicant"></p>
 </footer>
-
 <script src="js.js"></script>
 </body>
 </html>
