@@ -21,42 +21,46 @@
     <div>
 <h2>Заголовок h2</h2>
     <form class="form">
-
+<div class = "containerForListOfQuestionsInForm">
        <div class="mainContainerForInputOfRange">
            <label class="containerForInputOfRange">
             Выберите диапазон
            </label>
-            <input class="inputForRangeFromZero" type = "text" placeholder="от 0">
-            <input class="inputForRangeTo" type = "text" placeholder="до 100">
-            <div>I don`t know</div>
-
+            <input class="inputForRangeFromZero" type = "number" placeholder="от 0">
+            <input class="inputForRangeTo" type = "number" placeholder="до 100">
+           <div class = "doubleRange">
+            <input class = "inputForRangeScrollStart" type = "range" min ="0" max = "150" step = "1">
+           <input class = "inputForRangeScrollFinish" type = "range" min ="0" max = "150" step = "1">
+           </div>
        </div>
       <div class = "mainContainerForInputOfSelect">
        <label class="containerForInputOfSelect">
             Выберите select
        </label>
-            <select  required name = "select">
+          <div class = "containerForSignOfSelect">
+            <select class = "selectOfProjectBuilders" required name = "select">
                 <option>Option</option>
                 <option>Vite</option>
                 <option>Webpack</option>
                 <option>Gulp</option>
             </select>
+          </div>
       </div>
             <div class="mainContainerForRadio">
             <label class="containerForRadio">
             Выберите radio
             </label>
                 <label class="firstInputForRadio">
-                <input type = "radio">
+                <input class = "selectOfProgrammingLanguagesJS" name = "ProgrammingLanguage" type = "radio">
                 Javascript
                 </label>
 
             <label class="secondInputForRadio">
-            <input type = "radio">
+            <input class = "selectOfProgrammingLanguagesPHP"  name = "ProgrammingLanguage" type = "radio">
               PHP
             </label>
                 <label class="thirdInputForRadio">
-            <input type = "radio">
+            <input class = "selectOfProgrammingLanguagesC" name = "ProgrammingLanguage" type = "radio">
                 C#
                 </label>
             </div>
@@ -64,32 +68,42 @@
         <label  class="containerForInputOfName">
             Введите ФИО
         </label>
-            <input class = "inputForName" type = "text" placeholder="Введите ФИО">
+            <input class = "inputForName" type = "text" placeholder="Placeholder">
             </div>
             <div class="mainContainerForAge">
         <label  class="containerForAge">
             Введите возраст в цифрах
         </label>
-            <input type = "number" placeholder="Placeholder">
+            <input class = "inputToEnterAge" type = "number" placeholder="Placeholder">
             </div>
+</div>
+        <div class = "containerForCheckboxes">
             <div class="mainContainerForRequiredCheckbox">
         <label class="containerForRequiredCheckbox">
-            <input type = "checkbox" required>
+            <input class = "requiredCheckbox" type = "checkbox" required>
             Обязательный checkbox
         </label>
             </div>
             <div class ="mainContainerForNotRequiredCheckbox">
         <label class="containerForNotRequiredCheckbox">
-            <input type = "checkbox">
+            <input class = "notRequiredCheckbox" type = "checkbox">
             Необязательный checkbox
         </label>
             </div>
-
+        </div>
     </form>
+        <button class="buttonToCleanForm">Очистить форму</button>
     <button class = "button" type = "submit">Отправить</button>
     </div>
     <dialog class="popup">
-        <div>Hi!</div>
+        <ul>Результат отправки!
+        <li>Диапазон</li>
+        <li>Select</li>
+        <li>Radio</li>
+        <li>ФИО</li>
+        <li>Возраст</li>
+        <li>Выбранные checkbox</li>
+        </ul>
         <button class="closeBottonForPopup" type="button">X</button>
     </dialog>
     <article class = "containerForFirdHeadingAndText">
