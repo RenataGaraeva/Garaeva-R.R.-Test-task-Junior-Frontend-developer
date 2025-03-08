@@ -211,5 +211,23 @@ select {
 }
 
 .choosedTypeOfProgrammingLanguage {
-border: 10px solid black;
+    border: 6px solid black;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.requiredCheckbox:checked {
+   background-color: yellow;
+}
+
+.notRequiredCheckbox:checked {
+
+    color: yellow;
+}
+
+
+.requiredCheckbox :checked ~ button {
+    opacity: 1;
 }
