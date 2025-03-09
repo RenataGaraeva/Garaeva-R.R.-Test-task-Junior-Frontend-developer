@@ -3,6 +3,9 @@ body {
     padding: 0;
     font-family: "Source Code Pro",  monospace;
 }
+.notAllowed {
+    border: 5px solid red;
+}
 
 .header {
     display: flex;
@@ -33,7 +36,7 @@ img {
 flex-basis: 30vw;
 }
 
-.containerForInputOfName input,
+
 select,
 .mainContainerForInputOfName input,
 .mainContainerForAge input
@@ -206,28 +209,102 @@ select {
     color: white;
 }
 
-.notAllowed {
-    border: 5px solid red
+.popup {
+width: 410px;
+    height: 215px;
+    border: none;
+    box-shadow: 10px 10px black;
+    position: relative;
 }
 
 .choosedTypeOfProgrammingLanguage {
-    border: 6px solid black;
+        border: 6px solid black;
+    }
+
+    .disabled {
+        opacity: 0.5;
+    }
+
+    .requiredCheckbox:checked {
+        background-color: yellow;
+    }
+
+    .notRequiredCheckbox:checked {
+
+        color: yellow;
+    }
+
+
+    .requiredCheckbox :checked ~ button {
+        opacity: 1;
+    }
+
+    /*Двойной ползунок */
+
+    .doubleRange {
+        position: relative;
+        width: 300px;
+        margin: 20px 0;
+    }
+
+    .doubleRange input[type="range"] {
+        position: absolute;
+        width: 100%;
+        background: transparent;
+        pointer-events: none;
+    }
+
+    .doubleRange input[type="range"]::-webkit-slider-runnable-track {
+        height: 1px;
+        background: rgba(217, 217, 217, 1);
+    }
+
+    .doubleRange input[type="range"]::-webkit-slider-thumb {
+        pointer-events: all;
+        position: relative;
+        z-index: 2;
+        width: 20px;
+        height: 20px;
+        background: #007bff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .doubleRange input[type="range"]::-moz-range-thumb {
+        pointer-events: all;
+        position: relative;
+        z-index: 2;
+        width: 20px;
+        height: 20px;
+        background: #007bff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .closeBottonForPopup {
+appearance: none;
+position: absolute;
+        top: 30px;
+        right: 30px;
+        background-color: #3A41FF;
+        /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
+        color: white;
+        width: 75px;
+        height: 38px;
+        box-shadow: 6px 5px black;
+
+    }
+.popup::backdrop {
+background-color: rgba(0 0 0 / 0.75)
 }
+    .titleOfSubmittedForm {
+        font-weight: 700;
+      margin-bottom: 8px;
+        margin-left: 40px;
+    }
 
-.disabled {
-    opacity: 0.5;
-}
-
-.requiredCheckbox:checked {
-   background-color: yellow;
-}
-
-.notRequiredCheckbox:checked {
-
-    color: yellow;
-}
-
-
-.requiredCheckbox :checked ~ button {
-    opacity: 1;
+@media (max-width: 600px) {
+    .image {
+height: 220px;
+    }
 }

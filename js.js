@@ -9,10 +9,17 @@ let userAnswers = {
     "notRequiredCheckbox": ''
     }
 
+let containerForInputOfName = document.getElementsByClassName('containerForInputOfName')[0]
     let filedsOfForm = Object.keys(userAnswers)
 
 let updateSubmittedListItemValue = function (text, type, peremennya, peremennyaTwo, extraText) {
-  if (peremennya === userAnswers.startNumber) {
+    console.log("Нет, сюда" + requiredCheckbox.name)
+
+    if (peremennyaTwo === userAnswers.notRequiredCheckbox && userAnswers.notRequiredCheckbox !== '' ) {
+        type.textContent = text + peremennya + extraText + peremennyaTwo
+    } else if (peremennyaTwo === 'noValue' && peremennya === userAnswers.requiredCheckbox) {
+        type.textContent = text + peremennya
+    } else if (peremennya === userAnswers.startNumber) {
       type.textContent = text + peremennya + extraText + peremennyaTwo
       type.value = text + peremennya + extraText + peremennyaTwo //убрать можно такие штуки
   } else if (peremennyaTwo === undefined) {
@@ -38,13 +45,15 @@ let inputForRangeFromZero = document.getElementsByClassName('inputForRangeFromZe
 let inputForRangeTo = document.getElementsByClassName('inputForRangeTo')[0]
 let inputForRangeScroll = document.getElementsByClassName('inputForRangeScroll')[0]
 let mainContainerForRadio = document.getElementsByClassName('mainContainerForRadio')[0]
+
 mainContainerForRadio.addEventListener('change', (e) => {
     userAnswers.programmingLanguage = e.target.value
-    console.log(e.target)
+    console.log("Я здесь" + e.target.value)
     e.target.classList.add('choosedTypeOfProgrammingLanguage')
-    updateSubmittedListItemValue("Radio: ", submittedListItemProgramLanguages, userAnswers.programmingLanguage)
-    localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+   /* updateSubmittedListItemValue("Radio: ", submittedListItemProgramLanguages, userAnswers.programmingLanguage) */
     areAllAFieldsFilledIn()
+    localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+
 })
 
 let selectOfProjectBuilders = document.getElementsByClassName("selectOfProjectBuilders")[0]
@@ -55,17 +64,8 @@ let notRequiredCheckbox = document.getElementsByClassName("notRequiredCheckbox")
 let buttonToCleanForm = document.getElementsByClassName("buttonToCleanForm")[0]
 let inputForName = document.getElementsByClassName("inputForName")[0]
 
-
-
-
-
 let buttonToSubmitForm = document.getElementsByClassName("button")[0];
-/*
-let saveInfo = function (info) {
-    return info
-}
 
- */
 let massiveToCheckName = [];
 let massiveToCheckNameForLetters = [];
 
@@ -75,10 +75,7 @@ let areAllAFieldsFilledIn = function () { //здесь данные надо б�
     console.log("Сюда" + filedsOfForm.slice(0, filedsOfForm.length - 1))
     let newOne = filedsOfForm.slice(0, filedsOfForm.length - 1).every(filed => {
         console.log(filed)
-        /*  filed = userAnswers[filed];
-          console.log("Вот" + filed)
 
-         */
         console.log("Вот итог" + userAnswers[filed])
         console.log("Ответ" + userAnswers[filed] !== false || userAnswers[filed] !== '')
        return  userAnswers[filed] !== ''  //    return  userAnswers[filed] !== false || userAnswers[filed] !== ''
@@ -103,7 +100,7 @@ areAllAFieldsFilledIn()
 requiredCheckbox.addEventListener('change', () => {
     if (requiredCheckbox.checked) {
         userAnswers.requiredCheckbox = 'requiredCheckbox'
-        requiredCheckbox.value = 'Обязательный чекбокс'
+      /*  requiredCheckbox.value = 'Обязательный чекбокс' */
     } else {
         userAnswers.requiredCheckbox = ''
     }
@@ -114,9 +111,11 @@ requiredCheckbox.addEventListener('change', () => {
 notRequiredCheckbox.addEventListener('change', () => {
     if (notRequiredCheckbox.checked) {
         userAnswers.notRequiredCheckbox = 'notRequiredCheckbox'
-        notRequiredCheckbox = 'notRequiredCheckbox'
+     notRequiredCheckbox.value = 'notRequiredCheckbox'
     } else {
         userAnswers.notRequiredCheckbox = ''
+        notRequiredCheckbox.value = 'noValue'
+
     }
     localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
     areAllAFieldsFilledIn()
@@ -124,60 +123,64 @@ notRequiredCheckbox.addEventListener('change', () => {
 inputForName.addEventListener('input', (e) => {
 //разобраться в условиях
 
-   let  checkingName = e.target.value;
-
-   if (checkingName === "a") {
-       inputToEnterAge.value = 1
-   }
+   let checkingName = e.target.value;
+console.log(checkingName)
     massiveToCheckNameForLetters = checkingName.split('')
-    let doesNameHasOnlyLettersAndSpaces = massiveToCheckNameForLetters.every(element => element ===  /[a-zA-Zа-яА-Я\s]/.test(element))
-    if (!doesNameHasOnlyLettersAndSpaces) {
-        console.log(" всё в порядке вроде")
-    } else {
-        console.log("ошибка, нельзя вводить цифры и другие символы, только буквы и пробелы")
-    }
+    let doesNameHasOnlyLettersAndSpaces = massiveToCheckNameForLetters.every(element => /[a-zA-Zа-яА-Я\s]/.test(element))
+    console.log("Только буквы и пробелы" + doesNameHasOnlyLettersAndSpaces)
     massiveToCheckName = checkingName.split(' ')
     console.log(massiveToCheckName)
-let doesEveryNameHaveMoreThanTwoLetters = massiveToCheckName.every(element => element.length >= 2);
+    let doesEveryNameHaveMoreThanTwoLetters = massiveToCheckName.every(element => element.length >= 2);
 
     let lengthOfName = massiveToCheckName.length
-    if (lengthOfName !== 3) {
-        console.log("ошибка, имени должно быть 3") //придумать что-то, как показать ошибку через стили?
 
+    if (!doesNameHasOnlyLettersAndSpaces) {
+        inputForName.classList.add('notAllowed')
+        containerForInputOfName.textContent = "Введите ФИО: вводите только буквы"
+        userAnswers.name = '';
+    } else if (!doesEveryNameHaveMoreThanTwoLetters) {
+        containerForInputOfName.textContent = "Фамилия, имя и отчество должны быть больше 2 букв"
+        userAnswers.name = '';
+        } else if (lengthOfName !== 3) {
+        containerForInputOfName.textContent = "Введите полное ФИО: фамилию, имя и отчество"
+        userAnswers.name = '';
+    } else {
+        containerForInputOfName.textContent = "Введите ФИО: всё корректно"
+        userAnswers.name = e.target.value;
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
     }
-if (!doesEveryNameHaveMoreThanTwoLetters) {
-    console.log("каждое имя не должно быть меньше 2 букв")
-}
+
      /*   inputForName.value = name; это же буквально одно и то же, что и name = e.target.value; вроде пока я проверки не сделала*/
   /*  updateSubmittedListItemValue("ФИО: ", submittedListItemName, name) не нужная штука у инпутов их убрать надо вроде и заменить на функции,
   * сами переменные в формах типа вроде*/
-    userAnswers.name = e.target.value;
-  /*  saveInfo(userAnswers.name) */
 
-  /*  areAllAFieldsFilledIn()
 
-   */
     areAllAFieldsFilledIn()
-    localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+
     console.log( userAnswers.name)
-    return userAnswers.name
+   /* return userAnswers.name */
 })
 console.log("Вне" + userAnswers.name)
  let userAnswersLocalStorage =  JSON.parse(localStorage.getItem('userAnswers')) // inputForName.value =  JSON.parse(localStorage.getItem('user')) выведенный объект
 
-
-
-
 console.log(userAnswersLocalStorage)
 inputForName.value = userAnswersLocalStorage.name
 
+let containerForAge = document.getElementsByClassName('containerForAge')[0]
 inputToEnterAge.addEventListener('input', (e) => {
 
-    userAnswers.age = e.target.value;
-    inputToEnterAge.value =  userAnswers.age;
-    updateSubmittedListItemValue("Возраст: ", submittedListItemAge,  userAnswers.age)
-    areAllAFieldsFilledIn()
-    localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+    let checkingAge = e.target.value;
+    massiveToCheckAgeForNumbers = checkingAge.split('')
+    let doesAgeHasOnlyNumbers =  massiveToCheckAgeForNumbers.every(element => /^\d+$/.test(element))
+console.log("ДА"+ doesAgeHasOnlyNumbers)
+    if (doesAgeHasOnlyNumbers) {
+        containerForAge.textContent = "Введите возраст в цифрах"
+        userAnswers.age = e.target.value
+        areAllAFieldsFilledIn()
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+    } else {
+        containerForAge.textContent = "Вводите только цифры"
+    }
 })
 
 buttonToCleanForm.addEventListener("click", () => {
@@ -189,6 +192,8 @@ buttonToCleanForm.addEventListener("click", () => {
     inputForName.value = '';
     inputForRangeFromZero.value = '';
     inputForRangeTo.value = '';
+    requiredCheckbox.checked = ''
+    mainContainerForRadio.checked = ''
     window.localStorage.clear()
 })
 
@@ -202,34 +207,40 @@ infoOfApplicant.textContent = "© Гараева Рената Ринатовна
 
 let popup = document.getElementsByClassName("popup")[0];
 
-
 let submittedListItemRange = document.getElementsByClassName('submittedListItemRange')[0]
 
-let  updateSubmittedListItemRangeValue = function (firstNumber, secondNumber) {
-    submittedListItemRange.textContent = "Диапазон с " + firstNumber + " до " + secondNumber
-}
 
 inputForRangeFromZero.addEventListener('input', (e) => {
     let enteredStartNumber = Number(e.target.value)
+    if (enteredStartNumber >= 0) {
+        userAnswers.finishNumber = Number(userAnswers.startNumber + 1);
+        inputForRangeTo.value = userAnswers.finishNumber
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+    }
+/*
     if (enteredStartNumber <= 150 && enteredStartNumber >= 0) {
         inputForRangeFromZero.classList.remove('notAllowed')
         inputForRangeFromZero.textContent = enteredStartNumber;
         userAnswers.startNumber = enteredStartNumber
-      /*  saveInfo(userAnswers.startNumber) */
-      /*  updateSubmittedListItemRangeValue() */
 
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
 
     } else {
+        containerForInputOfRange.textContent =
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
         inputForRangeFromZero.classList.add('notAllowed')
     }
     areAllAFieldsFilledIn()
+
+ */
 })
 
 inputForRangeTo.addEventListener('input', (e) => {
     let enteredFinishNumber = Number(e.target.value)
-
+if (Number(userAnswers.startNumber) >= 0) {
+    userAnswers.finishNumber = Number(userAnswers.startNumber) + 1;
+    inputForRangeTo.value = userAnswers.finishNumber
+}
     if (enteredFinishNumber >=  userAnswers.startNumber && enteredFinishNumber <= 150 ) {      //вот здесь вопросы
         inputForRangeTo.classList.remove('notAllowed')
         inputForRangeTo.textContent = enteredFinishNumber;
@@ -240,7 +251,9 @@ inputForRangeTo.addEventListener('input', (e) => {
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
           inputForRangeTo.classList.add('notAllowed')
     }
+
 } )
+
 selectOfProjectBuilders.addEventListener('change', (e) => {
     userAnswers.projectBuilder = e.target.value
     areAllAFieldsFilledIn()
@@ -248,14 +261,13 @@ selectOfProjectBuilders.addEventListener('change', (e) => {
     areAllAFieldsFilledIn()
 })
 
-
 buttonToSubmitForm.addEventListener('click', () => {
 
     updateSubmittedListItemValue("ФИО: ", submittedListItemName, userAnswers.name)
-    updateSubmittedListItemValue("Выбранные checkbox: ", submittedListItemCheckboxes, requiredCheckbox.value, notRequiredCheckbox.value)
+    updateSubmittedListItemValue("Выбранные checkbox: ", submittedListItemCheckboxes, userAnswers.requiredCheckbox,userAnswers.notRequiredCheckbox,", ")
     updateSubmittedListItemValue("Возраст: ", submittedListItemAge, userAnswers.age)
     updateSubmittedListItemValue("Radio: ", submittedListItemProgramLanguages, userAnswers.programmingLanguage)
-    updateSubmittedListItemValue("Диапазон с ", submittedListItemRange, userAnswers.startNumber, userAnswers.finishNumber, " до ")
+    updateSubmittedListItemValue("Диапазон: от ", submittedListItemRange, userAnswers.startNumber, userAnswers.finishNumber, " до ")
     updateSubmittedListItemValue("Select: ",  submittedListItemProgramBuilder, userAnswers.projectBuilder)
 
     popup.showModal()
@@ -267,6 +279,16 @@ closeBottonForPopup.addEventListener('click', () => {
     popup.close()
 })
 
+let closeOnBackDropClick = function ({currentTarget, target}) {
+    popup = currentTarget
+    let isClickedOnBackground = target === popup
+
+    if (isClickedOnBackground) {
+       popup.close()
+    }
+}
+popup.addEventListener('click', closeOnBackDropClick)
+/*
 popup.addEventListener('click', ({areaOfPopup, notAreaOfPopup}) => {
     let popupArea = areaOfPopup
     let clickOnBackground = notAreaOfPopup === popupArea
@@ -275,11 +297,14 @@ popup.addEventListener('click', ({areaOfPopup, notAreaOfPopup}) => {
     }
 })
 
+
+ */
 popup.addEventListener('keydown', (e) => {
     if (e.code === "Esc") {
         popup.close()
     }
 })
+
 
 inputToEnterAge.value = userAnswersLocalStorage.age
 userAnswers.name = userAnswersLocalStorage.name
@@ -296,13 +321,23 @@ userAnswers.requiredCheckbox = userAnswersLocalStorage.requiredCheckbox
 userAnswers.notRequiredCheckbox = userAnswersLocalStorage.notRequiredCheckbox
 requiredCheckbox.checked = userAnswersLocalStorage.requiredCheckbox
 notRequiredCheckbox.checked = userAnswersLocalStorage.notRequiredCheckbox
+requiredCheckbox.value = userAnswersLocalStorage.requiredCheckbox
+notRequiredCheckbox.value = userAnswersLocalStorage.notRequiredCheckbox
 
 /*
-submittedListItemProgramBuilder.textContent = "Select " + choosedTypeOfProjectBuilder
-submittedListItemProgramLanguages.textContent = "Radio" + choosedTypeOfProgrammingLanguage
+document.addEventListener('DOMContentLoaded', () => {
+    let getValueOfProgrammingLanguageFromLocalStorage = function () {
+        let value = userAnswersLocalStorage.programmingLanguage
+console.log("Здесь"+ value)
+        let newValue = document.getElementsByClassName('value')
+        console.log("Пробую" + newValue)
+        newValue.value = value
+        console.log("И здесь Пробую" +  newValue.value )
+        console.log("Локад И здесь Пробую" +  newValue.checked )
+      userAnswers.programmingLanguage = newValue.value
 
-
-submittedListItemAge.textContent = "Возраст " + age
-submittedListItemCheckboxes.textContent = "Выбранные checkbox"
+    }
+    getValueOfProgrammingLanguageFromLocalStorage()
+});
 
  */
