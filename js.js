@@ -1,3 +1,4 @@
+import { listenerForButtonToCleanForm } from "./js/try.js"
 let userAnswers = {
     "name": '',
     "age": '',
@@ -61,8 +62,9 @@ let selectOfProgrammingLanguages = document.getElementsByClassName("selectOfProg
 let inputToEnterAge = document.getElementsByClassName("inputToEnterAge")[0]
 let requiredCheckbox = document.getElementsByClassName("requiredCheckbox")[0]
 let notRequiredCheckbox = document.getElementsByClassName("notRequiredCheckbox")[0]
-let buttonToCleanForm = document.getElementsByClassName("buttonToCleanForm")[0]
-let inputForName = document.getElementsByClassName("inputForName")[0]
+
+
+export let inputForName = document.getElementsByClassName("inputForName")[0]
 
 let buttonToSubmitForm = document.getElementsByClassName("button")[0];
 
@@ -163,39 +165,26 @@ console.log(checkingName)
 console.log("Вне" + userAnswers.name)
  let userAnswersLocalStorage =  JSON.parse(localStorage.getItem('userAnswers')) // inputForName.value =  JSON.parse(localStorage.getItem('user')) выведенный объект
 
-console.log(userAnswersLocalStorage)
-inputForName.value = userAnswersLocalStorage.name
 
 let containerForAge = document.getElementsByClassName('containerForAge')[0]
 inputToEnterAge.addEventListener('input', (e) => {
 
     let checkingAge = e.target.value;
-    massiveToCheckAgeForNumbers = checkingAge.split('')
+    let massiveToCheckAgeForNumbers = checkingAge.split('')
     let doesAgeHasOnlyNumbers =  massiveToCheckAgeForNumbers.every(element => /^\d+$/.test(element))
 console.log("ДА"+ doesAgeHasOnlyNumbers)
-    if (doesAgeHasOnlyNumbers) {
-        containerForAge.textContent = "Введите возраст в цифрах"
-        userAnswers.age = e.target.value
-        areAllAFieldsFilledIn()
+if (doesAgeHasOnlyNumbers) {
+        containerForAge.textContent = "Вводите только цифры"
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
     } else {
-        containerForAge.textContent = "Вводите только цифры"
+        containerForAge.textContent = "Введите возраст в цифрах"
+        userAnswers.age = e.target.value
+    localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+        areAllAFieldsFilledIn()
+
     }
 })
 
-buttonToCleanForm.addEventListener("click", () => {
-    selectOfProjectBuilders.value = '';
-    selectOfProgrammingLanguages.value = '';
-    requiredCheckbox.value = '';
-    notRequiredCheckbox.value = '';
-    inputToEnterAge.value = '';
-    inputForName.value = '';
-    inputForRangeFromZero.value = '';
-    inputForRangeTo.value = '';
-    requiredCheckbox.checked = ''
-    mainContainerForRadio.checked = ''
-    window.localStorage.clear()
-})
 
 let time = new Date()
 let showThisYear = time.getFullYear()
@@ -284,27 +273,18 @@ let closeOnBackDropClick = function ({currentTarget, target}) {
     let isClickedOnBackground = target === popup
 
     if (isClickedOnBackground) {
-       popup.close()
+        popup.close()
     }
 }
 popup.addEventListener('click', closeOnBackDropClick)
-/*
-popup.addEventListener('click', ({areaOfPopup, notAreaOfPopup}) => {
-    let popupArea = areaOfPopup
-    let clickOnBackground = notAreaOfPopup === popupArea
-    if (clickOnBackground) {
-        popup.close()
-    }
-})
 
-
- */
 popup.addEventListener('keydown', (e) => {
     if (e.code === "Esc") {
         popup.close()
     }
 })
-
+inputForName.value = userAnswersLocalStorage.name
+let buttonToCleanForm = document.getElementsByClassName("buttonToCleanForm")[0]
 
 inputToEnterAge.value = userAnswersLocalStorage.age
 userAnswers.name = userAnswersLocalStorage.name
@@ -323,21 +303,17 @@ requiredCheckbox.checked = userAnswersLocalStorage.requiredCheckbox
 notRequiredCheckbox.checked = userAnswersLocalStorage.notRequiredCheckbox
 requiredCheckbox.value = userAnswersLocalStorage.requiredCheckbox
 notRequiredCheckbox.value = userAnswersLocalStorage.notRequiredCheckbox
+buttonToCleanForm.addEventListener("click", () => {
+    selectOfProjectBuilders.value = '';
+    selectOfProgrammingLanguages.value = '';
+    requiredCheckbox.value = '';
+    notRequiredCheckbox.value = '';
+    inputToEnterAge.value = '';
+    inputForName.value = '';
+    inputForRangeFromZero.value = '';
+    inputForRangeTo.value = '';
+    requiredCheckbox.checked = ''
+    mainContainerForRadio.checked = ''
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    let getValueOfProgrammingLanguageFromLocalStorage = function () {
-        let value = userAnswersLocalStorage.programmingLanguage
-console.log("Здесь"+ value)
-        let newValue = document.getElementsByClassName('value')
-        console.log("Пробую" + newValue)
-        newValue.value = value
-        console.log("И здесь Пробую" +  newValue.value )
-        console.log("Локад И здесь Пробую" +  newValue.checked )
-      userAnswers.programmingLanguage = newValue.value
-
-    }
-    getValueOfProgrammingLanguageFromLocalStorage()
-});
-
- */
+    window.localStorage.clear()
+})

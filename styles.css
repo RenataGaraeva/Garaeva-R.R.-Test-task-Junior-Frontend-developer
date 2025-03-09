@@ -10,33 +10,93 @@ body {
 .header {
     display: flex;
     margin-bottom: 37px;
+height: 221px;
+
 }
+
+.containerForHeadingAndTextInHeader {
+   /* display: flex;
+    justify-content: center;
+
+    */
+    position: relative;
+    background-color: black;
+   /* padding-left: 404px;
+    padding-right: 75px;
+    padding-top: 31px;
+
+    */
+  flex-grow: 2;
+    /*    flex-basis: auto;  */
+  }
+
+.extraInnerContainerForHeadingAndTextInHeader {
+    position: absolute;
+
+    right: 50px;
+    width: 363px;
+}
+  .text,
+  .firstHeading {
+      color: white;
+
+
+    /* margin: 0 auto */
+  }
+  /*
+.text {
+font-weight: 400;
+}
+
+   */
+
+  .firstHeading {
+     margin-bottom: 12px;
+  }
+
+
+  img {
+/*      height: 100%; */
+      /*   flex-basis: 30vw; */
+     flex-grow: 1;
+
+}
+
+
 form {
     margin-bottom: 24px;
 }
-
+h2 {
+    text-align: left;
+    width: 645px;
+    margin: 0 auto;
+}
 .containerForListOfQuestionsInForm {
     display: grid;
-    justify-content: space-between;
+    justify-content: center;
     grid-template-columns: 315px 315px;
-    gap: 10px 10px;
+    gap: 10px 15px;
     grid-template-areas:
             "InputOfRange . "
     "InputOfSelect InputOfRadio"
     "InputOfName inputOfAge"
     "inputForRequiredCheckbox inputForNotRequiredCheckbox";
 }
-
+.infoOfApplicant {
+    color: black;
+    font-size: 12px;
+}
 .containerForCheckboxes {
   display: flex;
     flex-direction: row;
+    width: 645px;
+    margin: 0 auto;
 }
 
-img {
-flex-basis: 30vw;
+.groupOButtonsToCleanFormAndSubmitForm {
+    width: 645px;
+    margin: 0 auto;
 }
-
-
 select,
 .mainContainerForInputOfName input,
 .mainContainerForAge input
@@ -55,10 +115,19 @@ main {
     margin: 0 158px;
 }
 
-footer {
-    margin-top: auto;
+h2 {
+    margin-bottom: 16px;
 }
-
+footer {
+ /*   margin-top: auto; */
+    width: 645px;
+    margin: 0 auto;
+}
+.containerForFirdHeadingAndText {
+    width: 645px;
+    margin: 0 auto;
+    margin-bottom: 36px;
+}
 .mainContainerForInputOfRange {
     display: grid;
     grid-area: InputOfRange;
@@ -193,21 +262,13 @@ select {
     grid-area: inputOfAge
 }
 
-.containerForHeadingAndTextInHeader {
-    width: 363px;
-  background-color: black;
-    padding-left: 404px;
-    padding-right: 75px;
-    padding-top: 31px;
-}
+
 .borderline {
-    border-bottom: solid 1px black
+    border-bottom: solid 1px black;
+    opacity: 25%;
 }
 
-.text,
-.firstHeading {
-    color: white;
-}
+
 
 .popup {
 width: 410px;

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Тестовое Гараевой Р.Р.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
@@ -11,11 +11,12 @@
 <body>
 <header class = "header">
     <div class="containerForHeadingAndTextInHeader">
+        <div class = "extraInnerContainerForHeadingAndTextInHeader">
 <h1 class="firstHeading">Заголовок h1</h1>
     <p class = 'text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
     </div>
-        <img class="image" src = "image.png" alt="road">
-
+        <img class="image" src = "imageForHeader.png" alt="road">
 </header>
 <main>
     <div>
@@ -39,7 +40,7 @@
        </label>
           <div class = "containerForSignOfSelect">
             <select class = "selectOfProjectBuilders" required name = "select">
-                <option>Option</option>
+                <option value="Option">Option</option>
                 <option value="Vite">Vite</option>
                 <option value="Webpack">Webpack</option>
                 <option value="Gulp">Gulp</option>
@@ -92,8 +93,10 @@
             </div>
         </div>
     </form>
+        <div class="groupOButtonsToCleanFormAndSubmitForm">
         <button class="buttonToCleanForm">Очистить форму</button>
     <button class = "button" type = "submit">Отправить</button>
+        </div>
     </div>
     <dialog class="popup">
         <h4 class = "titleOfSubmittedForm ">Результат отправки:</h4>
@@ -116,6 +119,6 @@
     <div class="borderline"></div>
     <p class = "infoOfApplicant"></p>
 </footer>
-<script src="js.js"></script>
+<script type = "module" src="js.js"></script>
 </body>
 </html>
