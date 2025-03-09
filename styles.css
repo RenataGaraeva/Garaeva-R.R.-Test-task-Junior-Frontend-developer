@@ -1,371 +1,345 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Source Code Pro",  monospace;
+  margin: 0;
+  padding: 0;
+  font-family: "Source Code Pro", monospace;
 }
 .notAllowed {
-    border: 5px solid red;
+  border: 5px solid red;
 }
 
 .header {
-    display: flex;
-    margin-bottom: 37px;
-height: 221px;
-
+  display: flex;
+  margin-bottom: 37px;
+  height: 221px;
 }
 
 .containerForHeadingAndTextInHeader {
-   /* display: flex;
+  /* display: flex;
     justify-content: center;
 
     */
-    position: relative;
-    background-color: black;
-   /* padding-left: 404px;
+  position: relative;
+  background-color: black;
+  /* padding-left: 404px;
     padding-right: 75px;
     padding-top: 31px;
 
     */
   flex-grow: 2;
-    /*    flex-basis: auto;  */
-  }
+  /*    flex-basis: auto;  */
+}
 
 .extraInnerContainerForHeadingAndTextInHeader {
-    position: absolute;
+  position: absolute;
 
-    right: 50px;
-    width: 363px;
+  right: 50px;
+  width: 363px;
 }
-  .text,
-  .firstHeading {
-      color: white;
-
-
-    /* margin: 0 auto */
-  }
-  /*
-.text {
-font-weight: 400;
+.text,
+.firstHeading {
+  color: white;
 }
 
-   */
-
-  .firstHeading {
-     margin-bottom: 12px;
-  }
-
-
-  img {
-/*      height: 100%; */
-      /*   flex-basis: 30vw; */
-     flex-grow: 1;
-
+.firstHeading {
+  margin-bottom: 12px;
 }
 
+img {
+  flex-grow: 1;
+}
 
 form {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 h2 {
-    text-align: left;
-    width: 645px;
-    margin: 0 auto;
+  text-align: left;
+  width: 645px;
+  margin: 0 auto;
 }
 .containerForListOfQuestionsInForm {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 315px 315px;
-    gap: 10px 15px;
-    grid-template-areas:
-            "InputOfRange . "
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 315px 315px;
+  gap: 10px 15px;
+  grid-template-areas:
+    "InputOfRange . "
     "InputOfSelect InputOfRadio"
     "InputOfName inputOfAge"
     "inputForRequiredCheckbox inputForNotRequiredCheckbox";
 }
 .infoOfApplicant {
-    color: black;
-    font-size: 12px;
+  color: black;
+  font-size: 12px;
 }
 .containerForCheckboxes {
   display: flex;
-    flex-direction: row;
-    width: 645px;
-    margin: 0 auto;
+  flex-direction: row;
+  width: 645px;
+  margin: 0 auto;
 }
 
 .groupOButtonsToCleanFormAndSubmitForm {
-    width: 645px;
-    margin: 0 auto;
+  width: 645px;
+  margin: 0 auto;
 }
 select,
 .mainContainerForInputOfName input,
-.mainContainerForAge input
-{
-    width: 315px;
-    height: 35px;
-    border: 1px solid black;
+.mainContainerForAge input {
+  width: 315px;
+  height: 35px;
+  border: 1px solid black;
 }
 
 .doubleRange {
-
 }
 
 footer,
 main {
-    margin: 0 158px;
+  margin: 0 158px;
 }
 
 h2 {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 footer {
- /*   margin-top: auto; */
-    width: 645px;
-    margin: 0 auto;
+  width: 645px;
+  margin: 0 auto;
 }
 .containerForFirdHeadingAndText {
-    width: 645px;
-    margin: 0 auto;
-    margin-bottom: 36px;
+  width: 645px;
+  margin: 0 auto;
+  margin-bottom: 36px;
 }
 .mainContainerForInputOfRange {
-    display: grid;
-    grid-area: InputOfRange;
-    gap: 10px 10px;
-   grid-template-areas:
-"textForInputOfRange textForInputOfRange"
-"firstInputForRange secondInputForRange"
-"div div";
+  display: grid;
+  grid-area: InputOfRange;
+  gap: 10px 10px;
+  grid-template-areas:
+    "textForInputOfRange textForInputOfRange"
+    "firstInputForRange secondInputForRange"
+    "div div";
 }
 
 .mainContainerForInputOfSelect,
 .mainContainerForInputOfName,
 .mainContainerForAge {
- display: grid;
-   grid-auto-columns: auto;
-    grid-template-rows: auto auto;
-   gap: 10px;
+  display: grid;
+  grid-auto-columns: auto;
+  grid-template-rows: auto auto;
+  gap: 10px;
 }
 
 .mainContainerForRadio {
-    display: grid;
-   border: none;
-    grid-template-areas:
-"textForInputOfRadio textForInputOfRadio textForInputOfRadio"
-"firstInputForRadio secondInputForRadio thirdInputForRadio";
-    gap: 10px 10px;
+  display: grid;
+  border: none;
+  grid-template-areas:
+    "textForInputOfRadio textForInputOfRadio textForInputOfRadio"
+    "firstInputForRadio secondInputForRadio thirdInputForRadio";
+  gap: 10px 10px;
 }
 
 .containerForRadio {
-    grid-area: textForInputOfRadio;
+  grid-area: textForInputOfRadio;
 }
 .firstInputForRadio {
-    grid-area: firstInputForRadio;
+  grid-area: firstInputForRadio;
 }
 .secondInputForRadio {
-    grid-area: secondInputForRadio;
+  grid-area: secondInputForRadio;
 }
 .thirdInputForRadio {
-    grid-area: thirdInputForRadio;
+  grid-area: thirdInputForRadio;
 }
 .inputForRangeFromZero {
-    grid-area: firstInputForRange;
+  grid-area: firstInputForRange;
 }
 .inputForRangeTo {
-    grid-area: secondInputForRange;
+  grid-area: secondInputForRange;
 }
 .inputForRangeFromZero,
 .inputForRangeTo {
-    width: 151px;
-    height: 35px;
-    border: 1px solid black;
+  width: 151px;
+  height: 35px;
+  border: 1px solid black;
 }
 .mainContainerForInputOfRange div {
-    grid-area: div;
+  grid-area: div;
 }
 
 .buttonToCleanForm,
 .button {
-    margin-bottom: 43px;
-    background-color: #3A41FF;
-    /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
-    color: white;
-    width: 150px;
-    height: 38px;
-    box-shadow: 6px 5px black;
+  margin-bottom: 43px;
+  background-color: #3a41ff;
+  /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
+  color: white;
+  width: 150px;
+  height: 38px;
+  box-shadow: 6px 5px black;
 }
 .buttonToCleanForm {
-    background-color: pink
+  background-color: pink;
 }
 .button:hover {
-    border: 2px solid purple;
+  border: 2px solid purple;
 }
 .containerForInputOfRange {
-    grid-area: textForInputOfRange;
+  grid-area: textForInputOfRange;
 }
 
 .mainContainerForInputOfName {
-    grid-area: InputOfName
+  grid-area: InputOfName;
 }
 
 .mainContainerForInputOfSelect {
-    grid-area: InputOfSelect
+  grid-area: InputOfSelect;
 }
 
 .mainContainerForRequiredCheckbox {
-    grid-area: inputForRequiredCheckbox;
-    margin-right: 18px;
+  grid-area: inputForRequiredCheckbox;
+  margin-right: 18px;
 }
-
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
-input[type='number'],
+input[type="number"],
 input[type="number"]:hover,
 input[type="number"]:focus {
-    appearance: none;
-    -moz-appearance: textfield;
+  appearance: none;
+  -moz-appearance: textfield;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 select {
-    appearance: none;
+  appearance: none;
 }
 .containerForSignOfSelect {
-    position: relative;
+  position: relative;
 }
 .containerForSignOfSelect::after {
-
-    background-image: url("Polygon1.png");
-    background-repeat: no-repeat;
-    position: absolute;
-    right: 0;
-    margin-top: 20px;
-    pointer-events: none;
+  background-image: url("Polygon1.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  margin-top: 20px;
+  pointer-events: none;
 }
 
 .mainContainerForNotRequiredCheckbox {
-    grid-area: inputForNotRequiredCheckbox
+  grid-area: inputForNotRequiredCheckbox;
 }
 
 .mainContainerForRadio {
-    grid-area: InputOfRadio
+  grid-area: InputOfRadio;
 }
 
 .mainContainerForAge {
-    grid-area: inputOfAge
+  grid-area: inputOfAge;
 }
-
 
 .borderline {
-    border-bottom: solid 1px black;
-    opacity: 25%;
+  border-bottom: solid 1px black;
+  opacity: 25%;
 }
 
-
-
 .popup {
-width: 410px;
-    height: 215px;
-    border: none;
-    box-shadow: 10px 10px black;
-    position: relative;
+  width: 410px;
+  height: 215px;
+  border: none;
+  box-shadow: 10px 10px black;
+  position: relative;
 }
 
 .choosedTypeOfProgrammingLanguage {
-        border: 6px solid black;
-    }
-
-    .disabled {
-        opacity: 0.5;
-    }
-
-    .requiredCheckbox:checked {
-        background-color: yellow;
-    }
-
-    .notRequiredCheckbox:checked {
-
-        color: yellow;
-    }
-
-
-    .requiredCheckbox :checked ~ button {
-        opacity: 1;
-    }
-
-    /*Двойной ползунок */
-
-    .doubleRange {
-        position: relative;
-        width: 300px;
-        margin: 20px 0;
-    }
-
-    .doubleRange input[type="range"] {
-        position: absolute;
-        width: 100%;
-        background: transparent;
-        pointer-events: none;
-    }
-
-    .doubleRange input[type="range"]::-webkit-slider-runnable-track {
-        height: 1px;
-        background: rgba(217, 217, 217, 1);
-    }
-
-    .doubleRange input[type="range"]::-webkit-slider-thumb {
-        pointer-events: all;
-        position: relative;
-        z-index: 2;
-        width: 20px;
-        height: 20px;
-        background: #007bff;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .doubleRange input[type="range"]::-moz-range-thumb {
-        pointer-events: all;
-        position: relative;
-        z-index: 2;
-        width: 20px;
-        height: 20px;
-        background: #007bff;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .closeBottonForPopup {
-appearance: none;
-position: absolute;
-        top: 30px;
-        right: 30px;
-        background-color: #3A41FF;
-        /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
-        color: white;
-        width: 75px;
-        height: 38px;
-        box-shadow: 6px 5px black;
-
-    }
-.popup::backdrop {
-background-color: rgba(0 0 0 / 0.75)
+  border: 6px solid black;
 }
-    .titleOfSubmittedForm {
-        font-weight: 700;
-      margin-bottom: 8px;
-        margin-left: 40px;
-    }
+
+.disabled {
+  opacity: 0.5;
+}
+
+.requiredCheckbox:checked {
+  background-color: yellow;
+}
+
+.notRequiredCheckbox:checked {
+  color: yellow;
+}
+
+.requiredCheckbox :checked ~ button {
+  opacity: 1;
+}
+
+/*Двойной ползунок */
+
+.doubleRange {
+  position: relative;
+  width: 300px;
+  margin: 20px 0;
+}
+
+.doubleRange input[type="range"] {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+
+.doubleRange input[type="range"]::-webkit-slider-runnable-track {
+  height: 1px;
+  background: rgba(217, 217, 217, 1);
+}
+
+.doubleRange input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.doubleRange input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  position: relative;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.closeBottonForPopup {
+  appearance: none;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #3a41ff;
+  /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
+  color: white;
+  width: 75px;
+  height: 38px;
+  box-shadow: 6px 5px black;
+}
+.popup::backdrop {
+  background-color: rgba(0 0 0 / 0.75);
+}
+.titleOfSubmittedForm {
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-left: 40px;
+}
 
 @media (max-width: 600px) {
-    .image {
-height: 220px;
-    }
+  .image {
+    height: 220px;
+  }
 }

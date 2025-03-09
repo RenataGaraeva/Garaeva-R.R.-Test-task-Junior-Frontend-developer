@@ -1,124 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Тестовое Гараевой Р.Р.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
     <link href="styles.css" rel="stylesheet" />
-</head>
-<body>
-<header class = "header">
-    <div class="containerForHeadingAndTextInHeader">
-        <div class = "extraInnerContainerForHeadingAndTextInHeader">
-<h1 class="firstHeading">Заголовок h1</h1>
-    <p class = 'text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </head>
+  <body>
+    <header class="header">
+      <div class="containerForHeadingAndTextInHeader">
+        <div class="extraInnerContainerForHeadingAndTextInHeader">
+          <h1 class="firstHeading">Заголовок h1</h1>
+          <p class="text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
         </div>
-    </div>
-        <img class="image" src = "imageForHeader.png" alt="road">
-</header>
-<main>
-    <div>
-<h2>Заголовок h2</h2>
-    <form class="form">
-<div class = "containerForListOfQuestionsInForm">
-       <div class="mainContainerForInputOfRange">
-           <label class="containerForInputOfRange">
-            Выберите диапазон
-           </label>
-            <input class="inputForRangeFromZero" type = "number" placeholder="от 0">
-            <input class="inputForRangeTo" type = "number" placeholder="до 100">
-           <div class = "doubleRange">
-            <input class = "inputForRangeScrollStart" type = "range" min ="0" max = "150" step = "1">
-           <input class = "inputForRangeScrollFinish" type = "range" min ="0" max = "150" step = "1">
-           </div>
-       </div>
-      <div class = "mainContainerForInputOfSelect">
-       <label class="containerForInputOfSelect">
-            Выберите select
-       </label>
-          <div class = "containerForSignOfSelect">
-            <select class = "selectOfProjectBuilders" required name = "select">
-                <option value="Option">Option</option>
-                <option value="Vite">Vite</option>
-                <option value="Webpack">Webpack</option>
-                <option value="Gulp">Gulp</option>
-            </select>
-          </div>
       </div>
+      <img class="image" src="imageForHeader.png" alt="road" />
+    </header>
+    <main>
+      <div>
+        <h2>Заголовок h2</h2>
+        <form class="form">
+          <div class="containerForListOfQuestionsInForm">
+            <div class="mainContainerForInputOfRange">
+              <label class="containerForInputOfRange">
+                Выберите диапазон
+              </label>
+              <input
+                class="inputForRangeFromZero"
+                type="number"
+                placeholder="от 0"
+              />
+              <input
+                class="inputForRangeTo"
+                type="number"
+                placeholder="до 100"
+              />
+              <div class="doubleRange">
+                <input
+                  class="inputForRangeScrollStart"
+                  type="range"
+                  min="0"
+                  max="150"
+                  step="1"
+                />
+                <input
+                  class="inputForRangeScrollFinish"
+                  type="range"
+                  min="0"
+                  max="150"
+                  step="1"
+                />
+              </div>
+            </div>
+            <div class="mainContainerForInputOfSelect">
+              <label class="containerForInputOfSelect"> Выберите select </label>
+              <div class="containerForSignOfSelect">
+                <select class="selectOfProjectBuilders" required name="select">
+                  <option value="Option">Option</option>
+                  <option value="Vite">Vite</option>
+                  <option value="Webpack">Webpack</option>
+                  <option value="Gulp">Gulp</option>
+                </select>
+              </div>
+            </div>
             <fieldset class="mainContainerForRadio">
-            <legend class="containerForRadio">
-            Выберите radio
-            </legend>
-                <label class="firstInputForRadio">
-                <input class = "selectOfProgrammingLanguagesJS Javascript" value="Javascript" name = "ProgrammingLanguage" type = "radio">
+              <legend class="containerForRadio">Выберите radio</legend>
+              <label class="firstInputForRadio">
+                <input
+                  class="selectOfProgrammingLanguagesJS Javascript"
+                  value="Javascript"
+                  name="ProgrammingLanguage"
+                  type="radio"
+                />
                 Javascript
-                </label>
+              </label>
 
-            <label class="secondInputForRadio">
-            <input class = "selectOfProgrammingLanguagesPHP PHP" value="PHP" name = "ProgrammingLanguage" type = "radio">
-              PHP
-            </label>
-                <label class="thirdInputForRadio">
-            <input class = "selectOfProgrammingLanguagesC C#" value="C#" name = "ProgrammingLanguage" type = "radio">
+              <label class="secondInputForRadio">
+                <input
+                  class="selectOfProgrammingLanguagesPHP PHP"
+                  value="PHP"
+                  name="ProgrammingLanguage"
+                  type="radio"
+                />
+                PHP
+              </label>
+              <label class="thirdInputForRadio">
+                <input
+                  class="selectOfProgrammingLanguagesC C#"
+                  value="C#"
+                  name="ProgrammingLanguage"
+                  type="radio"
+                />
                 C#
-                </label>
+              </label>
             </fieldset>
             <div class="mainContainerForInputOfName">
-        <label  class="containerForInputOfName">
-            Введите ФИО
-        </label>
-            <input class = "inputForName" type = "text" placeholder="Placeholder">
+              <label class="containerForInputOfName"> Введите ФИО </label>
+              <input
+                class="inputForName"
+                type="text"
+                placeholder="Placeholder"
+              />
             </div>
             <div class="mainContainerForAge">
-        <label  class="containerForAge">
-            Введите возраст в цифрах
-        </label>
-            <input class = "inputToEnterAge" type = "number" placeholder="Placeholder" >
+              <label class="containerForAge"> Введите возраст в цифрах </label>
+              <input
+                class="inputToEnterAge"
+                type="number"
+                placeholder="Placeholder"
+              />
             </div>
-</div>
-        <div class = "containerForCheckboxes">
+          </div>
+          <div class="containerForCheckboxes">
             <div class="mainContainerForRequiredCheckbox">
-        <label class="containerForRequiredCheckbox">
-            <input class = "requiredCheckbox" type = "checkbox" name = "requiredCheckbox" required>
-            Обязательный checkbox
-        </label>
+              <label class="containerForRequiredCheckbox">
+                <input
+                  class="requiredCheckbox"
+                  type="checkbox"
+                  name="requiredCheckbox"
+                  required
+                />
+                Обязательный checkbox
+              </label>
             </div>
-            <div class ="mainContainerForNotRequiredCheckbox">
-        <label class="containerForNotRequiredCheckbox">
-            <input class = "notRequiredCheckbox" type = "checkbox" name = "notRequiredCheckbox">
-            Необязательный checkbox
-        </label>
+            <div class="mainContainerForNotRequiredCheckbox">
+              <label class="containerForNotRequiredCheckbox">
+                <input
+                  class="notRequiredCheckbox"
+                  type="checkbox"
+                  name="notRequiredCheckbox"
+                />
+                Необязательный checkbox
+              </label>
             </div>
-        </div>
-    </form>
+          </div>
+        </form>
         <div class="groupOButtonsToCleanFormAndSubmitForm">
-        <button class="buttonToCleanForm">Очистить форму</button>
-    <button class = "button" type = "submit">Отправить</button>
+          <button class="buttonToCleanForm">Очистить форму</button>
+          <button class="button" type="submit">Отправить</button>
         </div>
-    </div>
-    <dialog class="popup">
-        <h4 class = "titleOfSubmittedForm ">Результат отправки:</h4>
+      </div>
+      <dialog class="popup">
+        <h4 class="titleOfSubmittedForm">Результат отправки:</h4>
         <ul>
-        <li class = "submittedListItemRange"></li>
-        <li class = "submittedListItemProgramBuilder"></li>
-        <li class = "submittedListItemProgramLanguages"></li>
-        <li class = "submittedListItemName"></li>
-        <li class = "submittedListItemAge"></li>
-        <li class = "submittedListItemCheckboxes"></li>
+          <li class="submittedListItemRange"></li>
+          <li class="submittedListItemProgramBuilder"></li>
+          <li class="submittedListItemProgramLanguages"></li>
+          <li class="submittedListItemName"></li>
+          <li class="submittedListItemAge"></li>
+          <li class="submittedListItemCheckboxes"></li>
         </ul>
         <button class="closeBottonForPopup" type="button">Закрыть</button>
-    </dialog>
-    <article class = "containerForFirdHeadingAndText">
-    <h3>Заголовок h3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </article>
-</main>
-<footer class = "footer">
-    <div class="borderline"></div>
-    <p class = "infoOfApplicant"></p>
-</footer>
-<script type = "module" src="js.js"></script>
-</body>
+      </dialog>
+      <article class="containerForFirdHeadingAndText">
+        <h3>Заголовок h3</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </article>
+    </main>
+    <footer class="footer">
+      <div class="borderline"></div>
+      <p class="infoOfApplicant"></p>
+    </footer>
+    <script type="module" src="js.js"></script>
+  </body>
 </html>
