@@ -3,9 +3,6 @@ body {
   padding: 0;
   font-family: "Source Code Pro", monospace;
 }
-.notAllowed {
-  border: 5px solid red;
-}
 
 .header {
   display: flex;
@@ -14,19 +11,9 @@ body {
 }
 
 .containerForHeadingAndTextInHeader {
-  /* display: flex;
-    justify-content: center;
-
-    */
   position: relative;
   background-color: black;
-  /* padding-left: 404px;
-    padding-right: 75px;
-    padding-top: 31px;
-
-    */
   flex-grow: 2;
-  /*    flex-basis: auto;  */
 }
 
 .extraInnerContainerForHeadingAndTextInHeader {
@@ -170,7 +157,6 @@ footer {
 .button {
   margin-bottom: 43px;
   background-color: #3a41ff;
-  /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
   color: white;
   width: 150px;
   height: 38px;
@@ -218,17 +204,6 @@ li {
 select {
   appearance: none;
 }
-.containerForSignOfSelect {
-  position: relative;
-}
-.containerForSignOfSelect::after {
-  background-image: url("Polygon1.png");
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0;
-  margin-top: 20px;
-  pointer-events: none;
-}
 
 .mainContainerForNotRequiredCheckbox {
   grid-area: inputForNotRequiredCheckbox;
@@ -263,58 +238,8 @@ select {
   opacity: 0.5;
 }
 
-.requiredCheckbox:checked {
-  background-color: yellow;
-}
-
-.notRequiredCheckbox:checked {
-  color: yellow;
-}
-
 .requiredCheckbox :checked ~ button {
   opacity: 1;
-}
-
-/*Двойной ползунок */
-
-.doubleRange {
-  position: relative;
-  width: 300px;
-  margin: 20px 0;
-}
-
-.doubleRange input[type="range"] {
-  position: absolute;
-  width: 100%;
-  background: transparent;
-  pointer-events: none;
-}
-
-.doubleRange input[type="range"]::-webkit-slider-runnable-track {
-  height: 1px;
-  background: rgba(217, 217, 217, 1);
-}
-
-.doubleRange input[type="range"]::-webkit-slider-thumb {
-  pointer-events: all;
-  position: relative;
-  z-index: 2;
-  width: 20px;
-  height: 20px;
-  background: #007bff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.doubleRange input[type="range"]::-moz-range-thumb {
-  pointer-events: all;
-  position: relative;
-  z-index: 2;
-  width: 20px;
-  height: 20px;
-  background: #007bff;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 .closeBottonForPopup {
@@ -323,7 +248,6 @@ select {
   top: 30px;
   right: 30px;
   background-color: #3a41ff;
-  /*font-family: "Source Code Pro"; изменить по-другому текст в button*/
   color: white;
   width: 75px;
   height: 38px;

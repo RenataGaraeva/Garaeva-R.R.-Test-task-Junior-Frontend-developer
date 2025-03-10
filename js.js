@@ -9,6 +9,7 @@ let userAnswers = {
   notRequiredCheckbox: "",
 };
 
+let groupOButtonsToCleanFormAndSubmitForm = document.getElementsByClassName("groupOButtonsToCleanFormAndSubmitForm")[0]
 let containerForInputOfName = document.getElementsByClassName(
   "containerForInputOfName",
 )[0];
@@ -74,7 +75,7 @@ let mainContainerForRadio = document.getElementsByClassName(
 
 mainContainerForRadio.addEventListener("change", (e) => {
   userAnswers.programmingLanguage = e.target.value;
-console.log("Выбор языка программирования" + userAnswers.programmingLanguage)
+
   e.target.classList.add("choosedTypeOfProgrammingLanguage");
 
   areAllAFieldsFilledIn();
@@ -107,11 +108,13 @@ let areAllAFieldsFilledIn = function () {
     return userAnswers[filed] !== "";
   });
   if (!newOne) {
-console.log("Не все поля заполнены")
+
+    buttonToSubmitForm.textContent = 'Заполните все поля'
     buttonToSubmitForm.disabled = true;
     buttonToSubmitForm.classList.add("disabled");
   } else {
-    console.log("Все поля заполнены")
+    buttonToSubmitForm.textContent = 'Отправить'
+
     buttonToSubmitForm.disabled = false;
     buttonToSubmitForm.classList.remove("disabled");
   }
@@ -143,10 +146,10 @@ notRequiredCheckbox.addEventListener("change", () => {
     notRequiredCheckbox.value = "noValue";
   }
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
- /* areAllAFieldsFilledIn(); */
+
 });
 inputForName.addEventListener("input", (e) => {
-  let checkingName = e.target.value;
+  let checkingName = e.target.value
 
   massiveToCheckNameForLetters = checkingName.split("");
   let doesNameHasOnlyLettersAndSpaces = massiveToCheckNameForLetters.every(
@@ -176,10 +179,13 @@ inputForName.addEventListener("input", (e) => {
   } else {
     containerForInputOfName.textContent = "Введите ФИО: всё корректно";
     userAnswers.name = e.target.value;
+    console.log("Имя: всё корректно" + userAnswers.name)
+
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+    areAllAFieldsFilledIn();
   }
 
-  areAllAFieldsFilledIn();
+
 
 });
 
@@ -193,12 +199,14 @@ inputToEnterAge.addEventListener("input", (e) => {
     /^\d+$/.test(element),
   );
 
-  if (doesAgeHasOnlyNumbers) {
+  if (!doesAgeHasOnlyNumbers) {
     containerForAge.textContent = "Вводите только цифры";
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
   } else {
+
     containerForAge.textContent = "Введите возраст в цифрах";
     userAnswers.age = e.target.value;
+    console.log("Возраст указан корректно" +  userAnswers.age)
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
     areAllAFieldsFilledIn();
   }
@@ -236,7 +244,6 @@ inputForRangeTo.addEventListener("input", (e) => {
     enteredFinishNumber >= userAnswers.startNumber &&
     enteredFinishNumber <= 150
   ) {
-    inputForRangeTo.classList.remove("notAllowed");
     inputForRangeTo.textContent = enteredFinishNumber;
     userAnswers.finishNumber = enteredFinishNumber;
 
