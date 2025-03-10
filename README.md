@@ -10,8 +10,7 @@
 - JS
 - HTML
 - CSS
-- ESLint
-- Prettier
+- Prettier (для форматирования кода)
 - Vite
 
 Ссылка на деплой:

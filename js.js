@@ -9,7 +9,6 @@ let userAnswers = {
   notRequiredCheckbox: "",
 };
 
-let groupOButtonsToCleanFormAndSubmitForm = document.getElementsByClassName("groupOButtonsToCleanFormAndSubmitForm")[0]
 let containerForInputOfName = document.getElementsByClassName(
   "containerForInputOfName",
 )[0];
@@ -22,8 +21,6 @@ let updateSubmittedListItemValue = function (
   peremennyaTwo,
   extraText,
 ) {
-
-
   if (
     peremennyaTwo === userAnswers.notRequiredCheckbox &&
     userAnswers.notRequiredCheckbox !== ""
@@ -102,18 +99,15 @@ let massiveToCheckName = [];
 let massiveToCheckNameForLetters = [];
 
 let areAllAFieldsFilledIn = function () {
-
   let newOne = filedsOfForm.slice(0, filedsOfForm.length - 1).every((filed) => {
-
     return userAnswers[filed] !== "";
   });
   if (!newOne) {
-
-    buttonToSubmitForm.textContent = 'Заполните все поля'
+    buttonToSubmitForm.textContent = "Заполните все поля";
     buttonToSubmitForm.disabled = true;
     buttonToSubmitForm.classList.add("disabled");
   } else {
-    buttonToSubmitForm.textContent = 'Отправить'
+    buttonToSubmitForm.textContent = "Отправить";
 
     buttonToSubmitForm.disabled = false;
     buttonToSubmitForm.classList.remove("disabled");
@@ -124,10 +118,10 @@ areAllAFieldsFilledIn();
 
 requiredCheckbox.addEventListener("change", () => {
   if (requiredCheckbox.checked) {
-    console.log("Обязательный чек-бокс выбран" + requiredCheckbox.checked)
+    console.log("Обязательный чек-бокс выбран" + requiredCheckbox.checked);
     userAnswers.requiredCheckbox = "requiredCheckbox";
   } else {
-    console.log("Обязательный чек-бокс не выбран" + requiredCheckbox.checked)
+    console.log("Обязательный чек-бокс не выбран" + requiredCheckbox.checked);
     userAnswers.requiredCheckbox = "";
   }
 
@@ -137,19 +131,20 @@ requiredCheckbox.addEventListener("change", () => {
 
 notRequiredCheckbox.addEventListener("change", () => {
   if (notRequiredCheckbox.checked) {
-    console.log("Не обязательный чекбокс выбран" + notRequiredCheckbox.checked)
+    console.log("Не обязательный чекбокс выбран" + notRequiredCheckbox.checked);
     userAnswers.notRequiredCheckbox = "notRequiredCheckbox";
     notRequiredCheckbox.value = "notRequiredCheckbox";
   } else {
-    console.log("Не обязательный чекбокс не выбран" + notRequiredCheckbox.checked)
+    console.log(
+      "Не обязательный чекбокс не выбран" + notRequiredCheckbox.checked,
+    );
     userAnswers.notRequiredCheckbox = "";
     notRequiredCheckbox.value = "noValue";
   }
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
-
 });
 inputForName.addEventListener("input", (e) => {
-  let checkingName = e.target.value
+  let checkingName = e.target.value;
 
   massiveToCheckNameForLetters = checkingName.split("");
   let doesNameHasOnlyLettersAndSpaces = massiveToCheckNameForLetters.every(
@@ -179,14 +174,11 @@ inputForName.addEventListener("input", (e) => {
   } else {
     containerForInputOfName.textContent = "Введите ФИО: всё корректно";
     userAnswers.name = e.target.value;
-    console.log("Имя: всё корректно" + userAnswers.name)
+    console.log("Имя: всё корректно" + userAnswers.name);
 
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
     areAllAFieldsFilledIn();
   }
-
-
-
 });
 
 let userAnswersLocalStorage = JSON.parse(localStorage.getItem("userAnswers")); // inputForName.value =  JSON.parse(localStorage.getItem('user')) выведенный объект
@@ -203,10 +195,9 @@ inputToEnterAge.addEventListener("input", (e) => {
     containerForAge.textContent = "Вводите только цифры";
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
   } else {
-
     containerForAge.textContent = "Введите возраст в цифрах";
     userAnswers.age = e.target.value;
-    console.log("Возраст указан корректно" +  userAnswers.age)
+    console.log("Возраст указан корректно" + userAnswers.age);
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
     areAllAFieldsFilledIn();
   }
@@ -214,7 +205,6 @@ inputToEnterAge.addEventListener("input", (e) => {
 
 let time = new Date();
 let showThisYear = time.getFullYear();
-
 
 let infoOfApplicant = document.getElementsByClassName("infoOfApplicant")[0];
 infoOfApplicant.textContent =
@@ -226,31 +216,39 @@ let submittedListItemRange = document.getElementsByClassName(
   "submittedListItemRange",
 )[0];
 
-inputForRangeFromZero.addEventListener("input", (e) => {
-  let enteredStartNumber = e.target.value;
+let errorForStartNumber = "Число должно быть от 0 до 150";
+let errorForFinishNumber = "Число должно быть не меньше первого числа";
 
-  userAnswers.startNumber = enteredStartNumber;
-  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
-  areAllAFieldsFilledIn();
+let containerForInputOfRange = document.getElementsByClassName(
+  "containerForInputOfRange",
+)[0];
+inputForRangeFromZero.addEventListener("input", (e) => {
+  let enteredStartNumber = Number(e.target.value);
+
+  if (enteredStartNumber < 0 || enteredStartNumber > 150) {
+    containerForInputOfRange.textContent = errorForStartNumber;
+  } else if (enteredStartNumber > userAnswers.finishNumber) {
+    containerForInputOfRange.textContent =
+      "Число не должно быть больше второго числа";
+  } else {
+    containerForInputOfRange.textContent = "Выберите диапазон";
+    userAnswers.startNumber = enteredStartNumber;
+    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+    areAllAFieldsFilledIn();
+  }
 });
 
 inputForRangeTo.addEventListener("input", (e) => {
   let enteredFinishNumber = Number(e.target.value);
-  if (Number(userAnswers.startNumber) >= 0) {
-    userAnswers.finishNumber = Number(userAnswers.startNumber) + 1;
-    inputForRangeTo.value = userAnswers.finishNumber;
-  }
-  if (
-    enteredFinishNumber >= userAnswers.startNumber &&
-    enteredFinishNumber <= 150
-  ) {
-    inputForRangeTo.textContent = enteredFinishNumber;
-    userAnswers.finishNumber = enteredFinishNumber;
-
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  if (enteredFinishNumber < 0 || enteredFinishNumber > 150) {
+    containerForInputOfRange.textContent = errorForStartNumber;
+  } else if (enteredFinishNumber < userAnswers.startNumber) {
+    containerForInputOfRange.textContent = errorForFinishNumber;
   } else {
+    containerForInputOfRange.textContent = "Выберите диапазон: всё корректно";
+    userAnswers.finishNumber = enteredFinishNumber;
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
-    inputForRangeTo.classList.add("notAllowed");
+    areAllAFieldsFilledIn();
   }
 });
 
