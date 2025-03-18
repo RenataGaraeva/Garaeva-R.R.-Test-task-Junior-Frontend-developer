@@ -82,7 +82,7 @@ select,
 
 footer,
 main {
-  margin: 0 158px;
+  margin: 0 158px; /* здесь глянуть*/
 }
 
 h2 {
@@ -320,6 +320,12 @@ rotate: 45deg;
 }
 
 @media (max-width: 600px) {
+
+  footer,
+  main {
+    margin: 0 0;
+  }
+
   .image {
     height: 220px;
   }
@@ -327,6 +333,14 @@ rotate: 45deg;
 .containerForListOfQuestionsInForm {
   display: flex;
   flex-direction: column;
+  }
+
+  .mainContainerForInputOfRange,
+  .mainContainerForInputOfSelect,
+  .mainContainerForInputOfName,
+  .mainContainerForAge {
+    display: flex;
+    flex-direction: column;
   }
 }
 .selectOfProjectBuilders
