@@ -266,7 +266,6 @@ select {
   border: 1px solid black;
   width: 14px;
   height: 13px;
-
 }
 
 .requiredCheckbox:checked,
@@ -323,10 +322,11 @@ rotate: 45deg;
 @media (max-width: 600px) {
   .image {
     height: 220px;
-  },
+  }
 
-  main {
+.containerForListOfQuestionsInForm {
   display: flex;
+  flex-direction: column;
   }
 }
 .selectOfProjectBuilders
@@ -334,14 +334,16 @@ rotate: 45deg;
   background-position: right 10px center;
   background-image: url('Polygon 1.svg');
   background-repeat: no-repeat;
-  background-size: 10px
+  background-size: 10px;
+  opacity: 1;
 }
 
 .selectOfProjectBuilders:focus {
   background-position: right 10px center;
   background-image: url('Polygon 2.svg');
   background-repeat: no-repeat;
-  background-size: 10px
+  background-size: 10px;
+  opacity: 1;
 }
 
 .optionOfProjectBuilders {
@@ -349,10 +351,7 @@ rotate: 45deg;
  color: white;
 }
 
-.optionOfProjectBuilders:hover,
-.optionOfProjectBuilders:focus
-{
-  appearance: none;
+.optionOfProjectBuilders:nth-child(3) {
 background-color: rgba(2, 91, 88, 1);
 }
 

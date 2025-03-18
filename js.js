@@ -108,7 +108,7 @@ let notRequiredCheckbox = document.getElementsByClassName(
   "notRequiredCheckbox",
 )[0];
 
-export let inputForName = document.getElementsByClassName("inputForName")[0];
+let inputForName = document.getElementsByClassName("inputForName")[0];
 
 let buttonToSubmitForm = document.getElementsByClassName("button")[0];
 
@@ -357,6 +357,7 @@ requiredCheckbox.checked = userAnswersLocalStorage.requiredCheckbox;
 notRequiredCheckbox.checked = userAnswersLocalStorage.notRequiredCheckbox;
 requiredCheckbox.value = userAnswersLocalStorage.requiredCheckbox;
 notRequiredCheckbox.value = userAnswersLocalStorage.notRequiredCheckbox;
+
 buttonToCleanForm.addEventListener("click", () => {
   selectOfProjectBuilders.value = "";
   selectOfProgrammingLanguages.value = "";
