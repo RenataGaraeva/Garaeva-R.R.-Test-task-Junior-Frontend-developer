@@ -50,18 +50,18 @@
               <label class="containerForInputOfSelect"> Выберите select </label>
               <div class="containerForSignOfSelect">
                 <select class="selectOfProjectBuilders" required name="select">
-                  <option value="Option">Option</option>
-                  <option value="Vite">Vite</option>
-                  <option value="Webpack">Webpack</option>
-                  <option value="Gulp">Gulp</option>
+                  <option value="Option" disabled selected hidden>Option</option>
+                  <option class = "optionOfProjectBuilders"  value="Vite">Vite</option>
+                  <option class = "optionOfProjectBuilders"  value="Webpack">Webpack</option>
+                  <option class = "optionOfProjectBuilders"  value="Gulp">Gulp</option>
                 </select>
               </div>
             </div>
             <fieldset class="mainContainerForRadio">
               <legend class="containerForRadio">Выберите radio</legend>
-              <label class="firstInputForRadio">
+              <label class=" labelForRadio radio Javascript firstInputForRadio">
                 <input
-                  class="selectOfProgrammingLanguagesJS Javascript"
+                  class="selectOfProgrammingLanguages Javascript"
                   value="Javascript"
                   name="ProgrammingLanguage"
                   type="radio"
@@ -69,18 +69,18 @@
                 Javascript
               </label>
 
-              <label class="secondInputForRadio">
+              <label class=" labelForRadio radio PHP secondInputForRadio">
                 <input
-                  class="selectOfProgrammingLanguagesPHP PHP"
+                  class="selectOfProgrammingLanguages PHP"
                   value="PHP"
                   name="ProgrammingLanguage"
                   type="radio"
                 />
                 PHP
               </label>
-              <label class="thirdInputForRadio">
+              <label class=" labelForRadio radio C# thirdInputForRadio">
                 <input
-                  class="selectOfProgrammingLanguagesC C#"
+                  class="selectOfProgrammingLanguages C#"
                   value="C#"
                   name="ProgrammingLanguage"
                   type="radio"

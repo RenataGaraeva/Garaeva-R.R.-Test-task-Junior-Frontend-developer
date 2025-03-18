@@ -70,14 +70,31 @@ let mainContainerForRadio = document.getElementsByClassName(
   "mainContainerForRadio",
 )[0];
 
+let Javascript = document.getElementsByClassName("Javascript")[1]
+let PHP = document.getElementsByClassName("PHP")[1]
+let C = document.getElementsByClassName("C#")[1]
+
 mainContainerForRadio.addEventListener("change", (e) => {
   userAnswers.programmingLanguage = e.target.value;
 
+let newMassive = [Javascript, PHP, C].filter(element => element !== e.target)
+
   e.target.classList.add("choosedTypeOfProgrammingLanguage");
+let labelAgain = e.target.closest(".radio")
+
+  labelAgain.classList.remove("radio")
+
+  newMassive.map(element => {
+    element.classList.remove("choosedTypeOfProgrammingLanguage")
+    let again = element.closest(".labelForRadio")
+    again.classList.add("radio")
+  });
 
   areAllAFieldsFilledIn();
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 });
+
+
 
 let selectOfProjectBuilders = document.getElementsByClassName(
   "selectOfProjectBuilders",
@@ -103,7 +120,7 @@ let areAllAFieldsFilledIn = function () {
     return userAnswers[filed] !== "";
   });
   if (!newOne) {
-    buttonToSubmitForm.textContent = "Заполните все поля";
+    buttonToSubmitForm.textContent = "Заполните поля";
     buttonToSubmitForm.disabled = true;
     buttonToSubmitForm.classList.add("disabled");
   } else {

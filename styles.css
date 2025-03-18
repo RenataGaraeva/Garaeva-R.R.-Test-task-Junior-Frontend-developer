@@ -124,9 +124,13 @@ footer {
     "firstInputForRadio secondInputForRadio thirdInputForRadio";
   gap: 10px 10px;
 }
+.radio {
+  opacity: 50%;
+}
 
 .containerForRadio {
   grid-area: textForInputOfRadio;
+
 }
 .firstInputForRadio {
   grid-area: firstInputForRadio;
@@ -155,8 +159,11 @@ footer {
 
 .buttonToCleanForm,
 .button {
+  font-family: "Source Code Pro", monospace;
+  font-size: 14px;
+  line-height: 100%;
   margin-bottom: 43px;
-  background-color: #3a41ff;
+  background-color: rgba(2, 91, 88, 1);
   color: white;
   width: 150px;
   height: 38px;
@@ -183,6 +190,7 @@ footer {
 .mainContainerForRequiredCheckbox {
   grid-area: inputForRequiredCheckbox;
   margin-right: 18px;
+  position: relative;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -207,6 +215,7 @@ select {
 
 .mainContainerForNotRequiredCheckbox {
   grid-area: inputForNotRequiredCheckbox;
+  position: relative;
 }
 
 .mainContainerForRadio {
@@ -231,7 +240,12 @@ select {
 }
 
 .choosedTypeOfProgrammingLanguage {
-  border: 6px solid black;
+ appearance: none;
+  opacity: 1;
+  background-color: rgba(2, 91, 88, 1);
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
 }
 
 .disabled {
@@ -240,6 +254,50 @@ select {
 
 .requiredCheckbox :checked ~ button {
   opacity: 1;
+  appearance: none;
+  border: 1px solid black;
+  width: 14px;
+  height: 13px;
+}
+
+.requiredCheckbox,
+.notRequiredCheckbox {
+  appearance: none;
+  border: 1px solid black;
+  width: 14px;
+  height: 13px;
+
+}
+
+.requiredCheckbox:checked,
+.notRequiredCheckbox:checked {
+  appearance: none;
+  border: 1px solid rgba(2, 91, 88, 1);
+  width: 14px;
+  height: 13px;
+  background-color: rgba(2, 91, 88, 1);
+}
+
+.requiredCheckbox:checked::before,
+.notRequiredCheckbox:checked::before {
+  content: "";
+border: 1px solid white;
+  width: 9px;
+  position: absolute;
+rotate: 45deg;
+  top: 9px;
+  left: 6px;
+}
+
+.requiredCheckbox:checked::after,
+.notRequiredCheckbox:checked::after {
+  content: "";
+  border: 1px solid white;
+  width: 9px;
+  rotate: -45deg;
+  position: absolute;
+  top: 9px;
+  left: 6px;
 }
 
 .closeBottonForPopup {
@@ -247,7 +305,7 @@ select {
   position: absolute;
   top: 30px;
   right: 30px;
-  background-color: #3a41ff;
+  background-color: rgba(2, 91, 88, 1);
   color: white;
   width: 75px;
   height: 38px;
@@ -265,5 +323,49 @@ select {
 @media (max-width: 600px) {
   .image {
     height: 220px;
+  },
+
+  main {
+  display: flex;
   }
+}
+.selectOfProjectBuilders
+{
+  background-position: right 10px center;
+  background-image: url('Polygon 1.svg');
+  background-repeat: no-repeat;
+  background-size: 10px
+}
+
+.selectOfProjectBuilders:focus {
+  background-position: right 10px center;
+  background-image: url('Polygon 2.svg');
+  background-repeat: no-repeat;
+  background-size: 10px
+}
+
+.optionOfProjectBuilders {
+  background-color: black;
+ color: white;
+}
+
+.optionOfProjectBuilders:hover,
+.optionOfProjectBuilders:focus
+{
+  appearance: none;
+background-color: rgba(2, 91, 88, 1);
+}
+
+.inputForRangeFromZero::placeholder,
+.inputForRangeTo::placeholder,
+.selectOfProjectBuilders:first-child,
+.inputForName::placeholder,
+.inputToEnterAge::placeholder {
+  font-family: "Source Code Pro", monospace;
+  padding-left: 10px;
+  opacity: 0.5;
+}
+
+label {
+  font-weight: 500;
 }
