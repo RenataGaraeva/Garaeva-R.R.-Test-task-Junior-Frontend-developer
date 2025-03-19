@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тестовое Гараевой Р.Р.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +27,7 @@
       <img class="image" src="imageForHeader.png" alt="road" />
     </header>
     <main>
-      <div>
+      <div class="extraContainerForMain">
         <h2>Заголовок h2</h2>
         <form class="form">
           <div class="containerForListOfQuestionsInForm">
@@ -107,23 +107,25 @@
           </div>
           <div class="containerForCheckboxes">
             <div class="mainContainerForRequiredCheckbox">
-              <label class="containerForRequiredCheckbox">
+
                 <input
                   class="requiredCheckbox"
                   type="checkbox"
                   name="requiredCheckbox"
                   required
                 />
+              <label class="containerForRequiredCheckbox">
                 Обязательный checkbox
               </label>
             </div>
             <div class="mainContainerForNotRequiredCheckbox">
-              <label class="containerForNotRequiredCheckbox">
+
                 <input
                   class="notRequiredCheckbox"
                   type="checkbox"
                   name="notRequiredCheckbox"
                 />
+              <label class="containerForNotRequiredCheckbox">
                 Необязательный checkbox
               </label>
             </div>
