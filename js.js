@@ -78,7 +78,7 @@ mainContainerForRadio.addEventListener("change", (e) => {
   userAnswers.programmingLanguage = e.target.value;
 
 let newMassive = [Javascript, PHP, C].filter(element => element !== e.target)
-
+  e.target.classList.remove("selectOfProgrammingLanguages");
   e.target.classList.add("choosedTypeOfProgrammingLanguage");
 let labelAgain = e.target.closest(".radio")
 
@@ -359,6 +359,7 @@ requiredCheckbox.value = userAnswersLocalStorage.requiredCheckbox;
 notRequiredCheckbox.value = userAnswersLocalStorage.notRequiredCheckbox;
 
 buttonToCleanForm.addEventListener("click", () => {
+
   selectOfProjectBuilders.value = "";
   selectOfProgrammingLanguages.value = "";
   requiredCheckbox.value = "";

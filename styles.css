@@ -1,73 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Source Code Pro", monospace;
+ /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ /* min-height: 100vh;*/
+
+
 }
 
-.header {
+.doubleExtraContainerForMain,
+footer {
   display: flex;
-  margin-bottom: 37px;
-  height: 221px;
+  flex-direction: column;
+  align-items: center;
+  width: 684px;
+  margin: 0 auto;
+}
+.headerTwo {
+  margin-left: 0;
+  margin-right: 0;
+  align-self: flex-start;
+
 }
 
-.containerForHeadingAndTextInHeader {
-  position: relative;
-  background-color: black;
-  flex-grow: 2;
-
+p {
+  align-self: flex-start;
 }
-
-.extraInnerContainerForHeadingAndTextInHeader {
+/*
+.newContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ max-width: 648px;
+  height: 100vh;
+  margin: 0 auto;
   position: absolute;
-  right: 50px;
-  max-width: 363px;
-}
-.text,
-.firstHeading {
-  color: white;
+  bottom: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.firstHeading {
-  margin-bottom: 12px;
+ */
+
+/*
+.extraContainerForMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
-img {
-  flex-grow: 1;
-}
 
-form {
-  margin-bottom: 24px;
-}
+ */
 h2 {
   text-align: left;
   max-width: 645px;
   margin: 0 auto;
 }
-.containerForListOfQuestionsInForm {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 315px 315px; /* Здесь 50% 50% указать?*/
-  grid-template-areas:
-    "InputOfRange . "
-    "InputOfSelect InputOfRadio"
-    "InputOfName inputOfAge"
-    "inputForRequiredCheckbox inputForNotRequiredCheckbox";
-  gap: 10px 15px;
-}
-.infoOfApplicant {
-  color: black;
-  font-size: 12px;
-}
-.containerForCheckboxes {
-  display: flex;
-  flex-direction: row;
-  max-width: 645px;
-  margin: 0 auto;
-}
+
 
 .groupOButtonsToCleanFormAndSubmitForm {
   max-width: 645px;
-  margin: 0 auto;
+
+  align-self: flex-start;
+  justify-self: flex-start;
 }
 select,
 .mainContainerForInputOfName input,
@@ -77,88 +82,40 @@ select,
   border: 1px solid black;
 }
 
-.doubleRange {
-}
 
-footer,
+/*
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  flex: 1;
 }
+
+ */
+
 
 h2 {
   margin-bottom: 16px;
 }
-footer {
-  max-width: 645px;
-  margin: 0 auto;
-}
+
 .containerForFirdHeadingAndText {
-  max-width: 645px;
+ max-width: 648px;
   margin: 0 auto;
-  margin-bottom: 36px;
+ /* margin-bottom: 36px; */
 }
-.mainContainerForInputOfRange {
-  display: grid;
-  grid-area: InputOfRange;
-  gap: 10px 10px;
-  grid-template-areas:
-    "textForInputOfRange textForInputOfRange"
-    "firstInputForRange secondInputForRange"
-    "div div";
+input:active,
+select:active,
+input:focus,
+.closeBottonForPopup:focus {
+  outline: none;
 }
 
-.mainContainerForInputOfSelect,
-.mainContainerForInputOfName,
-.mainContainerForAge {
-  display: grid;
-  grid-auto-columns: auto;
-  grid-template-rows: auto auto;
-  gap: 10px;
+.closeBottonForPopup:focus {
+  border: 0;
 }
-
-.mainContainerForRadio {
-  display: grid;
-  border: none;
-  grid-template-areas:
-    "textForInputOfRadio textForInputOfRadio textForInputOfRadio"
-    "firstInputForRadio secondInputForRadio thirdInputForRadio";
-  gap: 10px 10px;
+select:focus {
+  border-radius: 0;
 }
-.radio {
-  opacity: 50%;
-}
-
-.containerForRadio {
-  grid-area: textForInputOfRadio;
-
-}
-.firstInputForRadio {
-  grid-area: firstInputForRadio;
-}
-.secondInputForRadio {
-  grid-area: secondInputForRadio;
-}
-.thirdInputForRadio {
-  grid-area: thirdInputForRadio;
-}
-.inputForRangeFromZero {
-  grid-area: firstInputForRange;
-}
-.inputForRangeTo {
-  grid-area: secondInputForRange;
-}
-.inputForRangeFromZero,
-.inputForRangeTo {
-  width: 151px;
-  height: 35px;
-  border: 1px solid black;
-}
-.mainContainerForInputOfRange div {
-  grid-area: div;
-}
-
 .buttonToCleanForm,
 .button {
   font-family: "Source Code Pro", monospace;
@@ -170,6 +127,7 @@ footer {
   width: 150px;
   height: 38px;
   box-shadow: 6px 5px black;
+  border: 0;
 }
 .buttonToCleanForm {
   background-color: pink;
@@ -177,154 +135,17 @@ footer {
 .button:hover {
   border: 2px solid purple;
 }
-.containerForInputOfRange {
-  grid-area: textForInputOfRange;
-}
-
-.mainContainerForInputOfName {
-  grid-area: InputOfName;
-
-}
-
-.mainContainerForInputOfSelect {
-  grid-area: InputOfSelect;
-}
-
-.mainContainerForRequiredCheckbox {
-  grid-area: inputForRequiredCheckbox;
-  margin-right: 18px;
-  position: relative;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type="number"],
-input[type="number"]:hover,
-input[type="number"]:focus {
-  appearance: none;
-  -moz-appearance: textfield;
-}
 
 li {
   list-style: none;
 }
 
-select {
-  appearance: none;
-}
-
-.mainContainerForNotRequiredCheckbox {
-  grid-area: inputForNotRequiredCheckbox;
-  position: relative;
-}
-
-.mainContainerForRadio {
-  grid-area: InputOfRadio;
-}
-
-.mainContainerForAge {
-  grid-area: inputOfAge;
-}
-
-.borderline {
-  border-bottom: solid 1px black;
-  opacity: 25%;
-}
-
-.popup {
-  max-width: 410px;
-  max-height: 215px;
-  border: none;
-  box-shadow: 10px 10px black;
-  position: relative;
-}
-
-.choosedTypeOfProgrammingLanguage {
- appearance: none;
-  opacity: 1;
-  background-color: rgba(2, 91, 88, 1);
-  border-radius: 50%;
-  width: 13px;
-  height: 13px;
-}
 
 .disabled {
   opacity: 0.5;
 }
 
-.requiredCheckbox :checked ~ button {
-  opacity: 1;
-  appearance: none;
-  border: 1px solid black;
-  width: 14px;
-  height: 13px;
-}
 
-.requiredCheckbox,
-.notRequiredCheckbox {
-  appearance: none;
-  border: 1px solid black;
-  width: 14px;
-  height: 13px;
-}
-
-.mainContainerForRequiredCheckbox,
-.mainContainerForNotRequiredCheckbox {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-  gap: 8px;
-}
-
-
-.requiredCheckbox:checked,
-.notRequiredCheckbox:checked {
-  appearance: none;
-  border: 1px solid rgba(2, 91, 88, 1);
-  width: 14px;
-  height: 13px;
-  background-color: rgba(2, 91, 88, 1);
-}
-
-.requiredCheckbox:checked::before,
-.notRequiredCheckbox:checked::before {
-  content: "";
-border: 1px solid white;
-  width: 9px;
-  position: absolute;
-rotate: 45deg;
-  top: 9px;
-  left: 6px;
-}
-
-.requiredCheckbox:checked::after,
-.notRequiredCheckbox:checked::after {
-  content: "";
-  border: 1px solid white;
-  width: 9px;
-  rotate: -45deg;
-  position: absolute;
-  top: 9px;
-  left: 6px;
-}
-
-.closeBottonForPopup {
-  appearance: none;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  background-color: rgba(2, 91, 88, 1);
-  color: white;
-  width: 75px;
-  height: 38px;
-  box-shadow: 6px 5px black;
-}
-.popup::backdrop {
-  background-color: rgba(0 0 0 / 0.75);
-}
 .titleOfSubmittedForm {
   font-weight: 700;
   margin-bottom: 8px;
@@ -337,110 +158,4 @@ select:hover,
 .labelForRadio:hover,
 .closeBottonForPopup:hover{
   border: solid 3px purple;
-}
-@media (max-width: 600px) {
-
-  header {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-
-  }
-
-  .image {
-    min-height: 220px;
-max-width: 33%;
-    flex-basis: 33%
-  }
-.containerForHeadingAndTextInHeader {
-  flex-basis: 67%;
-  max-width: 67%;
-}
-
-.popup {
-  width: 80%;
-}
-  .borderline {
-    width: 80%;
-  }
-footer,
-  .extraContainerForMain,
-  .containerForFirdHeadingAndText,
-  .containerForListOfQuestionsInForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  }
-
-.text {
-margin: 0 0;
-  padding: 0 0;
-  max-width: 100%;
-  max-height: 100%;
-}
-  .containerForFirdHeadingAndText {
-    max-width: 80%;
-  }
-  .containerForCheckboxes {
-    display: flex;
-   flex-direction: column;
-    max-width: 648px;
-    gap: 0;
-    margin: 0 0;
-    padding: 0 0;
-  }
-.mainContainerForRadio {
-  max-width: 648px;
-justify-content: stretch;
-
-}
-
-.mainContainerForAge {
-  margin-bottom: 10px;
-}
-}
-.selectOfProjectBuilders
-{
-  background-position: right 10px center;
-  background-image: url('Polygon 1.svg');
-  background-repeat: no-repeat;
-  background-size: 10px;
-  opacity: 1;
-}
-
-.selectOfProjectBuilders:focus {
-  background-position: right 10px center;
-  background-image: url('Polygon 2.svg');
-  background-repeat: no-repeat;
-  background-size: 10px;
-  opacity: 1;
-}
-
-.optionOfProjectBuilders {
-  background-color: black;
- color: white;
-}
-
-.optionOfProjectBuilders:nth-child(3) {
-background-color: rgba(2, 91, 88, 1);
-}
-
-.inputForRangeFromZero::placeholder,
-.inputForRangeTo::placeholder,
-.selectOfProjectBuilders:first-child,
-.inputForName::placeholder,
-.inputToEnterAge::placeholder,
-input:not([type = checkbox], [type = radio]) {
-  font-family: "Source Code Pro", monospace;
-  padding-left: 10px;
-  opacity: 0.5;
-}
-select:focus,
-input:not([type = checkbox], [type = radio]):focus {
-  border: solid 5px green;
-}
-
-label,
-.containerForRadio {
-  font-weight: 500;
 }

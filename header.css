@@ -1,0 +1,273 @@
+.header {
+   display: flex;
+    flex-direction: row;
+
+  /*  align-items: center;
+    /* display: grid; */
+ /*   grid-template-columns: repeat(3, 1fr);   /*grid-template-columns: 2fr 1fr; */
+    height: 221px;
+    background-color: black;
+
+    margin-bottom: 37px;
+   /* width: 100vw; /* если его убрать, то горизонтальный ползунок уйдёт, но верстка сместится*/
+}
+
+/*
+.extraContainerForHeader {
+    width: 100%;
+    height: 221px;
+}
+
+    .extraContainerForHeader {
+        background-color: black;
+        height: 221px;
+        width: 100%;
+        margin: 0 0;
+        padding: 0 0;
+    }
+
+ */
+
+
+.text,
+.firstHeading {
+    color: white;
+}
+.image {
+    height: 221px;
+  width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.firstHeading {
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+.containetForHeader {
+    background-color: black;
+width: 363px;
+    height: 150px;
+    margin-right: 75px;
+    margin-top: 31px;
+    margin-bottom: 40px;
+    margin-left: calc((100vw - 648px) / 2);
+
+}
+/*
+h1 {
+    height: 31px;
+}
+
+ */
+.text {
+    width: 363px;
+    height: 108px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+   /* line-height: 100%;
+    font-size: 14px;
+font-weight: 400;
+    letter-spacing: 0;
+
+    */
+}
+/*
+     .header {
+         display: flex;
+         margin-bottom: 37px;
+         background-color: black;
+         align-content: stretch;
+         width: 100vw;
+         height: 221px;
+     }
+      */
+
+/*
+.header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: black;
+    margin-bottom: 37px;
+    height: 221px;
+
+
+}
+
+
+ */
+/*
+.extraContainerForHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+
+ */
+/*
+.header {
+
+    align-self: center;
+    justify-content: center;
+    display: flex;
+
+    background-color: black;
+    width: 100vw;
+    height: 221px;
+}
+.again {
+    position: absolute;
+    max-width: 648px;
+    margin: 0 auto;
+}
+.image {
+    height: 221px;
+  /*  width: 33vw; */
+  /*  object-fit: cover;
+    object-position: left;
+  /*  flex-grow: 1; */
+/*}
+*/
+/*
+.extraContainterForHeader {
+    width: 100vw;
+    background-color: black;
+}
+
+ */
+/*.containetForHeader {
+    /*
+width: 363px;
+margin-right: 75px;
+
+     */
+   /* display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 648px;
+    flex-grow: 1;
+    margin-right: 75px;
+    margin-left: auto;
+
+}
+
+/*
+.containetForHeader:before {
+    background-color: black;
+    width: 100vw;
+    left: 100px;
+}
+
+ */
+/*
+.text {
+    width: 363px;
+    height: 108px;
+}
+/*
+.containerForBackgroundOfHeader {
+    background-color: black;
+    width: 33vw;
+}
+
+ */
+/*
+  .containetForHeader:before {
+
+background-color: black;
+      width: 100vw;
+  }
+
+ */
+/*
+.containetForHeader {
+grid-area: ContainerForHeader;
+/*  flex-grow: 2;
+ padding-right: 75px;
+
+max-width: 363px;
+
+ */
+
+/*
+.image {
+    grid-area: Image;
+}
+*/
+/*
+.text,
+.firstHeading {
+    color: white;
+
+}
+
+.firstHeading {
+    margin-bottom: 12px;
+}
+/*
+img {
+
+ flex-grow: 1;
+
+}
+
+ */
+
+
+/*.header {
+
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100vw;
+background-image: url("imageForHeader.png");
+}
+.firstHeading,
+.text {
+width: 313px;
+text-align: left;
+align-self: flex-start;
+color: white;
+margin-right: 75px;
+}
+
+
+/*
+* {
+box-sizing: border-box;
+}
+
+
+.header {
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 100vw;
+background-color: black;
+
+}
+
+.containetForHeader {
+width: 438px;
+margin-right: 75px;
+margin-left: auto;
+background-color: black;
+flex-basis: 2;
+}
+.text,
+.firstHeading {
+color: white;
+}
+
+.text {
+width: 313px;
+}
+.image {
+min-height: 221px;
+flex-basis: 1;
+
+}
+
+*/
