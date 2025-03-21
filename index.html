@@ -10,25 +10,29 @@
       rel="stylesheet"
     />
     <link href="styles.css" rel="stylesheet" />
+    <link href="header.css" rel="stylesheet" />
+    <link href="footer.css" rel="stylesheet" />
+    <link href="popup.css" rel="stylesheet" />
+    <link href="form.css" rel="stylesheet" />
+    <link href="adaptiveDesign.css" rel="stylesheet" />
   </head>
   <body>
-    <header class="header">
-      <div class="containerForHeadingAndTextInHeader">
-        <div class="extraInnerContainerForHeadingAndTextInHeader">
-          <h1 class="firstHeading">Заголовок h1</h1>
+  <main>
+    <section class="header">
+        <div class="containetForHeader">
+                  <h1 class="firstHeading">Заголовок h1</h1>
           <p class="text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
-        </div>
-      </div>
-      <img class="image" src="imageForHeader.png" alt="road" />
-    </header>
-    <main>
+          </div>
+          <img class="image" src="imageForHeader.png" alt="road" />
+              </section>
+    <div class="doubleExtraContainerForMain">
       <div class="extraContainerForMain">
-        <h2>Заголовок h2</h2>
+        <h2 class="headerTwo">Заголовок h2</h2>
         <form class="form">
           <div class="containerForListOfQuestionsInForm">
             <div class="mainContainerForInputOfRange">
@@ -137,6 +141,7 @@
         </div>
       </div>
       <dialog class="popup">
+        <div class="containerForPopup">
         <h4 class="titleOfSubmittedForm">Результат отправки:</h4>
         <ul>
           <li class="submittedListItemRange"></li>
@@ -146,9 +151,10 @@
           <li class="submittedListItemAge"></li>
           <li class="submittedListItemCheckboxes"></li>
         </ul>
+        </div>
         <button class="closeBottonForPopup" type="button">Закрыть</button>
       </dialog>
-      <article class="containerForFirdHeadingAndText">
+      <section class="containerForFirdHeadingAndText">
         <h3>Заголовок h3</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -156,7 +162,8 @@
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </p>
-      </article>
+      </section>
+    </div>
     </main>
     <footer class="footer">
       <div class="borderline"></div>
