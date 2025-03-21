@@ -182,11 +182,11 @@ inputForName.addEventListener("input", (e) => {
     userAnswers.name = "";
   } else if (!doesEveryNameHaveMoreThanTwoLetters) {
     containerForInputOfName.textContent =
-      "Фамилия, имя и отчество должны быть больше 2 букв";
+      "ФИО должно быть больше 2 букв";
     userAnswers.name = "";
   } else if (lengthOfName !== 3) {
     containerForInputOfName.textContent =
-      "Введите полное ФИО: фамилию, имя и отчество";
+      "Введите полное ФИО";
     userAnswers.name = "";
   } else {
     containerForInputOfName.textContent = "Введите ФИО: всё корректно";
