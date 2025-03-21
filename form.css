@@ -103,7 +103,25 @@ max-width: 315px;
 
 select {
     width: 315px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+  /*  -ms-progress-appearance: none */
 }
+
+option {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0!important;
+}
+/*
+option {
+    border: 0!important;
+}
+
+ */
 
 .mainContainerForInputOfSelect {
     grid-area: InputOfSelect;
