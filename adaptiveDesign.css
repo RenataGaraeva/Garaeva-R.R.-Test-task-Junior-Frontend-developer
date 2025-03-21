@@ -22,6 +22,12 @@
         flex-direction: row;
         align-items: center;
     }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
     .image {
         min-height: 221px;
       /*  max-width: 33%;
