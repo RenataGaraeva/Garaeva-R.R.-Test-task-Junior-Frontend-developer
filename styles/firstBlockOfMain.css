@@ -1,15 +1,15 @@
 .header {
-   display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
   /*  align-items: center;
     /* display: grid; */
- /*   grid-template-columns: repeat(3, 1fr);   /*grid-template-columns: 2fr 1fr; */
-    height: 221px;
-    background-color: black;
+  /*   grid-template-columns: repeat(3, 1fr);   /*grid-template-columns: 2fr 1fr; */
+  height: 221px;
+  background-color: black;
 
-    margin-bottom: 37px;
-   /* width: 100vw; /* если его убрать, то горизонтальный ползунок уйдёт, но верстка сместится*/
+  margin-bottom: 37px;
+  /* width: 100vw; /* если его убрать, то горизонтальный ползунок уйдёт, но верстка сместится*/
 }
 
 /*
@@ -28,32 +28,30 @@
 
  */
 
-
 .text,
 .firstHeading {
-    color: white;
+  color: white;
 }
 .image {
-    height: 221px;
+  height: 221px;
   width: 100%;
 
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .firstHeading {
-    margin-bottom: 12px;
-    margin-top: 0;
+  margin-bottom: 12px;
+  margin-top: 0;
 }
 .containetForHeader {
-    background-color: black;
-width: 363px;
-    height: 150px;
-    margin-right: 75px;
-    margin-top: 31px;
-    margin-bottom: 40px;
-    margin-left: calc((100vw - 648px) / 2);
-
+  background-color: black;
+  width: 363px;
+  height: 150px;
+  margin-right: 75px;
+  margin-top: 31px;
+  margin-bottom: 40px;
+  margin-left: calc((100vw - 648px) / 2);
 }
 /*
 h1 {
@@ -62,12 +60,12 @@ h1 {
 
  */
 .text {
-    width: 363px;
-    height: 108px;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: left;
-   /* line-height: 100%;
+  width: 363px;
+  height: 108px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: left;
+  /* line-height: 100%;
     font-size: 14px;
 font-weight: 400;
     letter-spacing: 0;
@@ -125,7 +123,7 @@ font-weight: 400;
 .image {
     height: 221px;
   /*  width: 33vw; */
-  /*  object-fit: cover;
+/*  object-fit: cover;
     object-position: left;
   /*  flex-grow: 1; */
 /*}
@@ -143,7 +141,7 @@ width: 363px;
 margin-right: 75px;
 
      */
-   /* display: flex;
+/* display: flex;
     flex-direction: row;
     position: absolute;
     width: 648px;
@@ -214,7 +212,6 @@ img {
 }
 
  */
-
 
 /*.header {
 

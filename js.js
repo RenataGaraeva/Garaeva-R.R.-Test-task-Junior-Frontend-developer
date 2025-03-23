@@ -9,37 +9,61 @@ let userAnswers = {
   notRequiredCheckbox: "",
 };
 
+let uncheckedUserAnswers = {
+  name: "",
+  age: "",
+  startNumber: "",
+  finishNumber: "",
+  projectBuilder: "",
+  programmingLanguage: "",
+  requiredCheckbox: "",
+  notRequiredCheckbox: "",
+};
+
+let isSubmitButtonActive = "";
+
+let userAnswersLocalStorage = JSON.parse(localStorage.getItem("userAnswers"));
+let unCheckedUserAnswersLocalStorage = JSON.parse(
+  localStorage.getItem("uncheckedUserAnswers"),
+);
+
 let containerForInputOfName = document.getElementsByClassName(
   "containerForInputOfName",
 )[0];
 let filedsOfForm = Object.keys(userAnswers);
 
+let saveLocalStorageUserAnswers = function (element, value) {
+  userAnswers[element] = value;
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+};
+
+let saveLocalStorageUncheckedUserAnswers = function (element, value) {
+  uncheckedUserAnswers[element] = value;
+  localStorage.setItem(
+    "uncheckedUserAnswers",
+    JSON.stringify(uncheckedUserAnswers),
+  );
+};
+
 let updateSubmittedListItemValue = function (
   text,
   type,
-  peremennya,
-  peremennyaTwo,
+  value,
+  extraValue,
   extraText,
 ) {
   if (
-    peremennyaTwo === userAnswers.notRequiredCheckbox &&
+    type === submittedListItemCheckboxes &&
     userAnswers.notRequiredCheckbox !== ""
   ) {
-    type.textContent = text + peremennya + extraText + peremennyaTwo;
-  } else if (
-    peremennyaTwo === "noValue" &&
-    peremennya === userAnswers.requiredCheckbox
-  ) {
-    type.textContent = text + peremennya;
-  } else if (peremennya === userAnswers.startNumber) {
-    type.textContent = text + peremennya + extraText + peremennyaTwo;
-    type.value = text + peremennya + extraText + peremennyaTwo; //убрать можно такие штуки
-  } else if (peremennyaTwo === undefined) {
-    type.textContent = text + peremennya;
-    type.value = text + peremennya;
+    type.textContent = text + value + extraText + extraValue;
+    type.value = text + value + extraText + extraValue;
+  } else if (type === submittedListItemRange) {
+    type.textContent = text + value + extraText + extraValue;
+    type.value = text + value + extraText + extraValue;
   } else {
-    type.textContent = text + peremennya + peremennyaTwo;
-    type.value = text + peremennya + peremennyaTwo;
+    type.textContent = text + value;
+    type.value = text + value;
   }
 };
 
@@ -70,31 +94,68 @@ let mainContainerForRadio = document.getElementsByClassName(
   "mainContainerForRadio",
 )[0];
 
-let Javascript = document.getElementsByClassName("Javascript")[1]
-let PHP = document.getElementsByClassName("PHP")[1]
-let C = document.getElementsByClassName("C#")[1]
+let Javascript = document.getElementsByClassName("Javascript")[1];
+let PHP = document.getElementsByClassName("PHP")[1];
+let C = document.getElementsByClassName("C#")[1];
 
+let areAllAFieldsFilledIn = function () {
+  let areUserAnswersAndUncheckedUserAnswersTheSame = filedsOfForm
+    .slice(0, filedsOfForm.length - 1)
+    .every((filed) => {
+      return userAnswers[filed] === uncheckedUserAnswers[filed];
+    });
+
+  let areUserAnswersFilled = filedsOfForm
+    .slice(0, filedsOfForm.length - 1)
+    .every((filed) => {
+      return userAnswers[filed] !== "";
+    });
+  let areUncheckedUserAnswersFilled = filedsOfForm
+    .slice(0, filedsOfForm.length - 1)
+    .every((filed) => {
+      return uncheckedUserAnswers[filed] !== "";
+    });
+
+  if (
+    areUserAnswersAndUncheckedUserAnswersTheSame === true &&
+    areUserAnswersFilled === true &&
+    areUncheckedUserAnswersFilled === true
+  ) {
+    buttonToSubmitForm.textContent = "Отправить";
+    buttonToSubmitForm.disabled = false;
+    buttonToSubmitForm.classList.remove("disabled");
+    isSubmitButtonActive = false;
+    localStorage.setItem("isSubmitButtonActive", isSubmitButtonActive);
+  } else {
+    buttonToSubmitForm.textContent = "Заполните поля";
+    buttonToSubmitForm.disabled = true;
+    buttonToSubmitForm.classList.add("disabled");
+    isSubmitButtonActive = true;
+    localStorage.setItem("isSubmitButtonActive", isSubmitButtonActive);
+  }
+};
 mainContainerForRadio.addEventListener("change", (e) => {
-  userAnswers.programmingLanguage = e.target.value;
-
-let newMassive = [Javascript, PHP, C].filter(element => element !== e.target)
+  let valueOfRadio = e.target.value;
+  let newMassive = [Javascript, PHP, C].filter(
+    (element) => element !== e.target,
+  );
   e.target.classList.remove("selectOfProgrammingLanguages");
   e.target.classList.add("choosedTypeOfProgrammingLanguage");
-let labelAgain = e.target.closest(".radio")
+  let labelAgain = e.target.closest(".radio");
 
-  labelAgain.classList.remove("radio")
+  labelAgain.classList.remove("radio");
 
-  newMassive.map(element => {
-    element.classList.remove("choosedTypeOfProgrammingLanguage")
-    let again = element.closest(".labelForRadio")
-    again.classList.add("radio")
+  newMassive.map((element) => {
+    element.classList.remove("choosedTypeOfProgrammingLanguage");
+    element.classList.add("selectOfProgrammingLanguages");
+    let again = element.closest(".labelForRadio");
+    again.classList.add("radio");
   });
 
+  saveLocalStorageUserAnswers("programmingLanguage", valueOfRadio);
+  saveLocalStorageUncheckedUserAnswers("programmingLanguage", valueOfRadio);
   areAllAFieldsFilledIn();
-  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 });
-
-
 
 let selectOfProjectBuilders = document.getElementsByClassName(
   "selectOfProjectBuilders",
@@ -115,51 +176,29 @@ let buttonToSubmitForm = document.getElementsByClassName("button")[0];
 let massiveToCheckName = [];
 let massiveToCheckNameForLetters = [];
 
-let areAllAFieldsFilledIn = function () {
-  let newOne = filedsOfForm.slice(0, filedsOfForm.length - 1).every((filed) => {
-    return userAnswers[filed] !== "";
-  });
-  if (!newOne) {
-    buttonToSubmitForm.textContent = "Заполните поля";
-    buttonToSubmitForm.disabled = true;
-    buttonToSubmitForm.classList.add("disabled");
-  } else {
-    buttonToSubmitForm.textContent = "Отправить";
-
-    buttonToSubmitForm.disabled = false;
-    buttonToSubmitForm.classList.remove("disabled");
-  }
-};
-
-areAllAFieldsFilledIn();
-
 requiredCheckbox.addEventListener("change", () => {
   if (requiredCheckbox.checked) {
-    console.log("Обязательный чек-бокс выбран" + requiredCheckbox.checked);
-    userAnswers.requiredCheckbox = "requiredCheckbox";
-  } else {
-    console.log("Обязательный чек-бокс не выбран" + requiredCheckbox.checked);
-    userAnswers.requiredCheckbox = "";
+    saveLocalStorageUserAnswers("requiredCheckbox", "requiredCheckbox");
+    saveLocalStorageUncheckedUserAnswers(
+      "requiredCheckbox",
+      "requiredCheckbox",
+    );
   }
 
-  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
   areAllAFieldsFilledIn();
 });
 
 notRequiredCheckbox.addEventListener("change", () => {
   if (notRequiredCheckbox.checked) {
-    console.log("Не обязательный чекбокс выбран" + notRequiredCheckbox.checked);
     userAnswers.notRequiredCheckbox = "notRequiredCheckbox";
     notRequiredCheckbox.value = "notRequiredCheckbox";
   } else {
-    console.log(
-      "Не обязательный чекбокс не выбран" + notRequiredCheckbox.checked,
-    );
     userAnswers.notRequiredCheckbox = "";
     notRequiredCheckbox.value = "noValue";
   }
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 });
+
 inputForName.addEventListener("input", (e) => {
   let checkingName = e.target.value;
 
@@ -179,43 +218,51 @@ inputForName.addEventListener("input", (e) => {
   if (!doesNameHasOnlyLettersAndSpaces) {
     inputForName.classList.add("notAllowed");
     containerForInputOfName.textContent = "Введите ФИО: вводите только буквы";
-    userAnswers.name = "";
+
+    saveLocalStorageUncheckedUserAnswers("name", checkingName);
+    areAllAFieldsFilledIn();
   } else if (!doesEveryNameHaveMoreThanTwoLetters) {
-    containerForInputOfName.textContent =
-      "ФИО должно быть больше 2 букв";
-    userAnswers.name = "";
+    containerForInputOfName.textContent = "ФИО должно быть больше 2 букв";
+    saveLocalStorageUncheckedUserAnswers("name", checkingName);
+    areAllAFieldsFilledIn();
   } else if (lengthOfName !== 3) {
-    containerForInputOfName.textContent =
-      "Введите полное ФИО";
-    userAnswers.name = "";
+    containerForInputOfName.textContent = "Введите полное ФИО";
+
+    saveLocalStorageUncheckedUserAnswers("name", checkingName);
+    areAllAFieldsFilledIn();
   } else {
     containerForInputOfName.textContent = "Введите ФИО: всё корректно";
-    userAnswers.name = e.target.value;
-    console.log("Имя: всё корректно" + userAnswers.name);
 
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+    saveLocalStorageUncheckedUserAnswers("name", checkingName);
+    saveLocalStorageUserAnswers("name", checkingName);
+
     areAllAFieldsFilledIn();
   }
 });
-
-let userAnswersLocalStorage = JSON.parse(localStorage.getItem("userAnswers")); // inputForName.value =  JSON.parse(localStorage.getItem('user')) выведенный объект
 
 let containerForAge = document.getElementsByClassName("containerForAge")[0];
 inputToEnterAge.addEventListener("input", (e) => {
   let checkingAge = e.target.value;
   let massiveToCheckAgeForNumbers = checkingAge.split("");
-  let doesAgeHasOnlyNumbers = massiveToCheckAgeForNumbers.every((element) =>
-    /^\d+$/.test(element),
-  );
+  let doesAgeHasOnlyNumbers = massiveToCheckAgeForNumbers.every((element) => {
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(Number(element));
+  });
 
-  if (!doesAgeHasOnlyNumbers) {
+  if (doesAgeHasOnlyNumbers) {
     containerForAge.textContent = "Вводите только цифры";
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+
+    saveLocalStorageUncheckedUserAnswers("age", checkingAge);
+    areAllAFieldsFilledIn();
+  } else if (Number(checkingAge) > 150) {
+    containerForAge.textContent = "Введите реальный возраст";
+
+    saveLocalStorageUncheckedUserAnswers("age", checkingAge);
+    areAllAFieldsFilledIn();
   } else {
     containerForAge.textContent = "Введите возраст в цифрах";
-    userAnswers.age = e.target.value;
-    console.log("Возраст указан корректно" + userAnswers.age);
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+    saveLocalStorageUserAnswers("age", checkingAge);
+    saveLocalStorageUncheckedUserAnswers("age", checkingAge);
+
     areAllAFieldsFilledIn();
   }
 });
@@ -234,49 +281,89 @@ let submittedListItemRange = document.getElementsByClassName(
 )[0];
 
 let errorForStartNumber = "Число должно быть от 0 до 150";
-let errorForFinishNumber = "Число должно быть не меньше первого числа";
+let errorForFinishNumber =
+  "Число не должно быть равно или меньше первого числа";
 
 let containerForInputOfRange = document.getElementsByClassName(
   "containerForInputOfRange",
 )[0];
 inputForRangeFromZero.addEventListener("input", (e) => {
-  let enteredStartNumber = Number(e.target.value);
+  let enteredStartNumber = e.target.value;
 
-  if (enteredStartNumber < 0 || enteredStartNumber > 150) {
+  let massiveToCheckStartNumber = enteredStartNumber.split("");
+  let doesNumberHaveOnlyNumbers = massiveToCheckStartNumber.every((element) => {
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(Number(element));
+  });
+
+  if (doesNumberHaveOnlyNumbers) {
+    containerForInputOfRange.textContent = "Вводите только цифры";
+
+    saveLocalStorageUncheckedUserAnswers("startNumber", enteredStartNumber);
+    areAllAFieldsFilledIn();
+  } else if (enteredStartNumber < 0 || enteredStartNumber > 150) {
     containerForInputOfRange.textContent = errorForStartNumber;
-  } else if (enteredStartNumber > userAnswers.finishNumber) {
+
+    saveLocalStorageUncheckedUserAnswers("startNumber", enteredStartNumber);
+    areAllAFieldsFilledIn();
+  } else if (
+    uncheckedUserAnswers.finishNumber !== "" &&
+    enteredStartNumber > uncheckedUserAnswers.finishNumber
+  ) {
     containerForInputOfRange.textContent =
       "Число не должно быть больше второго числа";
+
+    saveLocalStorageUncheckedUserAnswers("startNumber", enteredStartNumber);
+    areAllAFieldsFilledIn();
   } else {
     containerForInputOfRange.textContent = "Выберите диапазон";
-    userAnswers.startNumber = enteredStartNumber;
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+
+    saveLocalStorageUserAnswers("startNumber", enteredStartNumber);
+    saveLocalStorageUncheckedUserAnswers("startNumber", enteredStartNumber);
     areAllAFieldsFilledIn();
   }
 });
 
 inputForRangeTo.addEventListener("input", (e) => {
-  let enteredFinishNumber = Number(e.target.value);
-  if (enteredFinishNumber < 0 || enteredFinishNumber > 150) {
+  let enteredFinishNumber = e.target.value;
+
+  let massiveToCheckStartNumber = enteredFinishNumber.split("");
+  let doesNumberHaveOnlyNumbers = massiveToCheckStartNumber.every((element) => {
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(Number(element));
+  });
+
+  if (doesNumberHaveOnlyNumbers) {
+    containerForInputOfRange.textContent = "Вводите только цифры";
+
+    saveLocalStorageUncheckedUserAnswers("finishNumber", enteredFinishNumber);
+    areAllAFieldsFilledIn();
+  } else if (enteredFinishNumber < 0 || enteredFinishNumber > 150) {
     containerForInputOfRange.textContent = errorForStartNumber;
-  } else if (enteredFinishNumber < userAnswers.startNumber) {
+
+    saveLocalStorageUncheckedUserAnswers("finishNumber", enteredFinishNumber);
+    areAllAFieldsFilledIn();
+  } else if (enteredFinishNumber <= uncheckedUserAnswers.startNumber) {
     containerForInputOfRange.textContent = errorForFinishNumber;
+
+    saveLocalStorageUncheckedUserAnswers("finishNumber", enteredFinishNumber);
+    areAllAFieldsFilledIn();
   } else {
     containerForInputOfRange.textContent = "Выберите диапазон: всё корректно";
-    userAnswers.finishNumber = enteredFinishNumber;
-    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+
+    saveLocalStorageUserAnswers("finishNumber", enteredFinishNumber);
+    saveLocalStorageUncheckedUserAnswers("finishNumber", enteredFinishNumber);
     areAllAFieldsFilledIn();
   }
 });
 
 selectOfProjectBuilders.addEventListener("change", (e) => {
-  userAnswers.projectBuilder = e.target.value;
-  areAllAFieldsFilledIn();
-  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  saveLocalStorageUserAnswers("projectBuilder", e.target.value);
+  saveLocalStorageUncheckedUserAnswers("projectBuilder", e.target.value);
   areAllAFieldsFilledIn();
 });
 
-buttonToSubmitForm.addEventListener("click", () => {
+buttonToSubmitForm.addEventListener("click", (e) => {
+  e.preventDefault();
+
   updateSubmittedListItemValue(
     "ФИО: ",
     submittedListItemName,
@@ -337,39 +424,173 @@ popup.addEventListener("keydown", (e) => {
     popup.close();
   }
 });
-inputForName.value = userAnswersLocalStorage.name;
-let buttonToCleanForm = document.getElementsByClassName("buttonToCleanForm")[0];
 
-inputToEnterAge.value = userAnswersLocalStorage.age;
-userAnswers.name = userAnswersLocalStorage.name;
-userAnswers.age = userAnswersLocalStorage.age;
-userAnswers.programmingLanguage = userAnswersLocalStorage.programmingLanguage;
-userAnswers.finishNumber = userAnswersLocalStorage.finishNumber;
-userAnswers.projectBuilder = userAnswersLocalStorage.projectBuilder;
-userAnswers.startNumber = userAnswersLocalStorage.startNumber;
-inputForRangeFromZero.value = userAnswersLocalStorage.startNumber;
-inputForRangeTo.value = userAnswersLocalStorage.finishNumber;
-mainContainerForRadio.value = userAnswersLocalStorage.programmingLanguage;
-selectOfProjectBuilders.value = userAnswersLocalStorage.projectBuilder;
-userAnswers.requiredCheckbox = userAnswersLocalStorage.requiredCheckbox;
-userAnswers.notRequiredCheckbox = userAnswersLocalStorage.notRequiredCheckbox;
-requiredCheckbox.checked = userAnswersLocalStorage.requiredCheckbox;
-notRequiredCheckbox.checked = userAnswersLocalStorage.notRequiredCheckbox;
-requiredCheckbox.value = userAnswersLocalStorage.requiredCheckbox;
-notRequiredCheckbox.value = userAnswersLocalStorage.notRequiredCheckbox;
+let isButtonActiveFromLocalStorage = JSON.parse(
+  localStorage.getItem("isSubmitButtonActive"),
+);
+window.addEventListener("load", () => {
+  areAllAFieldsFilledIn();
 
-buttonToCleanForm.addEventListener("click", () => {
+  if (
+    unCheckedUserAnswersLocalStorage !== null &&
+    unCheckedUserAnswersLocalStorage !== undefined
+  ) {
+    inputForName.value = unCheckedUserAnswersLocalStorage.name;
+    inputToEnterAge.value = unCheckedUserAnswersLocalStorage.age;
+    requiredCheckbox.checked =
+      unCheckedUserAnswersLocalStorage.requiredCheckbox;
+    notRequiredCheckbox.checked =
+      unCheckedUserAnswersLocalStorage.notRequiredCheckbox;
+    requiredCheckbox.value = unCheckedUserAnswersLocalStorage.requiredCheckbox;
+    notRequiredCheckbox.value =
+      unCheckedUserAnswersLocalStorage.notRequiredCheckbox;
+    inputForRangeFromZero.value = unCheckedUserAnswersLocalStorage.startNumber;
+    inputForRangeTo.value = unCheckedUserAnswersLocalStorage.finishNumber;
+    mainContainerForRadio.value =
+      unCheckedUserAnswersLocalStorage.programmingLanguage;
+    selectOfProjectBuilders.value =
+      unCheckedUserAnswersLocalStorage.projectBuilder;
 
-  selectOfProjectBuilders.value = "";
-  selectOfProgrammingLanguages.value = "";
-  requiredCheckbox.value = "";
-  notRequiredCheckbox.value = "";
-  inputToEnterAge.value = "";
-  inputForName.value = "";
-  inputForRangeFromZero.value = "";
-  inputForRangeTo.value = "";
-  requiredCheckbox.checked = "";
-  mainContainerForRadio.checked = "";
+    uncheckedUserAnswers.name = unCheckedUserAnswersLocalStorage.name;
+    uncheckedUserAnswers.age = unCheckedUserAnswersLocalStorage.age;
+    uncheckedUserAnswers.programmingLanguage =
+      unCheckedUserAnswersLocalStorage.programmingLanguage;
+    uncheckedUserAnswers.finishNumber =
+      unCheckedUserAnswersLocalStorage.finishNumber;
+    uncheckedUserAnswers.projectBuilder =
+      unCheckedUserAnswersLocalStorage.projectBuilder;
+    uncheckedUserAnswers.startNumber =
+      unCheckedUserAnswersLocalStorage.startNumber;
+    uncheckedUserAnswers.requiredCheckbox =
+      unCheckedUserAnswersLocalStorage.requiredCheckbox;
+    uncheckedUserAnswers.notRequiredCheckbox =
+      unCheckedUserAnswersLocalStorage.notRequiredCheckbox;
+  }
 
+  if (
+    userAnswersLocalStorage !== null &&
+    userAnswersLocalStorage !== undefined
+  ) {
+    userAnswers.name = userAnswersLocalStorage.name;
+    userAnswers.age = userAnswersLocalStorage.age;
+    userAnswers.programmingLanguage =
+      userAnswersLocalStorage.programmingLanguage;
+    userAnswers.finishNumber = userAnswersLocalStorage.finishNumber;
+    userAnswers.projectBuilder = userAnswersLocalStorage.projectBuilder;
+    userAnswers.startNumber = userAnswersLocalStorage.startNumber;
+    userAnswers.requiredCheckbox = userAnswersLocalStorage.requiredCheckbox;
+    userAnswers.notRequiredCheckbox =
+      userAnswersLocalStorage.notRequiredCheckbox;
+  }
+
+  if (
+    userAnswersLocalStorage !== null &&
+    userAnswersLocalStorage !== undefined &&
+    userAnswersLocalStorage.programmingLanguage !== null &&
+    userAnswersLocalStorage.programmingLanguage !== ""
+  ) {
+    let elementForRadio = document.getElementsByClassName(
+      userAnswersLocalStorage.programmingLanguage,
+    )[1];
+
+    elementForRadio.classList.remove("selectOfProgrammingLanguages");
+    elementForRadio.classList.add("choosedTypeOfProgrammingLanguage");
+    let labelAgain = elementForRadio.closest(".radio");
+
+    labelAgain.classList.remove("radio");
+    let newMassive = [Javascript, PHP, C].filter(
+      (element) => element !== elementForRadio,
+    );
+    newMassive.map((element) => {
+      element.classList.remove("choosedTypeOfProgrammingLanguage");
+      element.classList.add("selectOfProgrammingLanguages");
+      let again = element.closest(".labelForRadio");
+      again.classList.add("radio");
+    });
+  }
+
+  if (
+    isButtonActiveFromLocalStorage !== null &&
+    isButtonActiveFromLocalStorage !== undefined
+  ) {
+    buttonToSubmitForm.disabled = isButtonActiveFromLocalStorage;
+    if (isButtonActiveFromLocalStorage === false) {
+      buttonToSubmitForm.classList.remove("disabled");
+      buttonToSubmitForm.textContent = "Отправить";
+    } else {
+      buttonToSubmitForm.classList.add("disabled");
+      buttonToSubmitForm.textContent = "Заполните поля";
+    }
+  }
+  console.log(localStorage);
+});
+
+let labelForJavascript = document.getElementsByClassName("labelForRadio")[0];
+let labelForPHP = document.getElementsByClassName("labelForRadio")[1];
+let labelForC = document.getElementsByClassName("labelForRadio")[2];
+
+let form = document.getElementsByClassName("form")[0];
+
+form.addEventListener("reset", function () {
+  areAllAFieldsFilledIn();
   window.localStorage.clear();
+
+  Javascript.classList.remove("choosedTypeOfProgrammingLanguage");
+  Javascript.classList.add("selectOfProgrammingLanguages");
+  labelForJavascript.classList.add("radio");
+  PHP.classList.remove("choosedTypeOfProgrammingLanguage");
+  PHP.classList.add("selectOfProgrammingLanguages");
+  labelForPHP.classList.add("radio");
+  C.classList.remove("choosedTypeOfProgrammingLanguage");
+  C.classList.add("selectOfProgrammingLanguages");
+  labelForC.classList.add("radio");
+
+  console.log(localStorage);
+
+  uncheckedUserAnswers.name = "";
+  uncheckedUserAnswers.age = "";
+  uncheckedUserAnswers.programmingLanguage = "";
+  uncheckedUserAnswers.finishNumber = "";
+  uncheckedUserAnswers.projectBuilder = "";
+  uncheckedUserAnswers.startNumber = "";
+  uncheckedUserAnswers.requiredCheckbox = "";
+  uncheckedUserAnswers.notRequiredCheckbox = "";
+
+  userAnswers.name = "";
+  userAnswers.age = "";
+  userAnswers.programmingLanguage = "";
+  userAnswers.finishNumber = "";
+  userAnswers.projectBuilder = "";
+  userAnswers.startNumber = "";
+  userAnswers.requiredCheckbox = "";
+  userAnswers.notRequiredCheckbox = "";
+  if (
+    userAnswersLocalStorage !== null &&
+    userAnswersLocalStorage !== undefined &&
+    userAnswersLocalStorage.programmingLanguage !== null &&
+    userAnswersLocalStorage.programmingLanguage !== ""
+  ) {
+    let elementForRadio = document.getElementsByClassName(
+      userAnswersLocalStorage.programmingLanguage,
+    )[1];
+
+    elementForRadio.classList.add("selectOfProgrammingLanguages");
+    elementForRadio.classList.remove("choosedTypeOfProgrammingLanguage");
+    let labelAgain = elementForRadio.closest(".radio");
+
+    labelAgain.add.remove("radio");
+    let newMassive = [Javascript, PHP, C].filter(
+      (element) => element !== elementForRadio,
+    );
+    newMassive.map((element) => {
+      element.classList.add("choosedTypeOfProgrammingLanguage");
+      element.classList.remove("selectOfProgrammingLanguages");
+      let again = element.closest(".labelForRadio");
+      again.classList.remove("radio");
+    });
+  }
+
+  buttonToSubmitForm.textContent = "Заполните поля";
+  buttonToSubmitForm.disabled = true;
+  buttonToSubmitForm.classList.add("disabled");
 });

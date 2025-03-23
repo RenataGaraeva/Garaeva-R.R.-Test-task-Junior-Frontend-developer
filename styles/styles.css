@@ -6,13 +6,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Source Code Pro", monospace;
- /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
- /* min-height: 100vh;*/
-
-
 }
 
 .doubleExtraContainerForMain,
@@ -27,46 +20,17 @@ footer {
   margin-left: 0;
   margin-right: 0;
   align-self: flex-start;
-
 }
 
 p {
   align-self: flex-start;
 }
-/*
-.newContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
- max-width: 648px;
-  height: 100vh;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
- */
-
-/*
-.extraContainerForMain {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-
- */
 h2 {
   text-align: left;
   max-width: 645px;
   margin: 0 auto;
 }
-
 
 .groupOButtonsToCleanFormAndSubmitForm {
   max-width: 645px;
@@ -82,27 +46,15 @@ select,
   border: 1px solid black;
 }
 
-
-/*
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
- */
-
-
 h2 {
   margin-bottom: 16px;
 }
 
 .containerForFirdHeadingAndText {
- max-width: 648px;
+  max-width: 648px;
   margin: 0 auto;
- /* margin-bottom: 36px; */
 }
+
 input:active,
 select:active,
 input:focus,
@@ -121,7 +73,6 @@ select:focus {
   font-family: "Source Code Pro", monospace;
   font-size: 14px;
   line-height: 100%;
-  margin-bottom: 43px;
   background-color: rgba(2, 91, 88, 1);
   color: white;
   width: 150px;
@@ -140,11 +91,9 @@ li {
   list-style: none;
 }
 
-
 .disabled {
   opacity: 0.5;
 }
-
 
 .titleOfSubmittedForm {
   font-weight: 700;
@@ -156,6 +105,6 @@ li {
 input:hover,
 select:hover,
 .labelForRadio:hover,
-.closeBottonForPopup:hover{
+.closeBottonForPopup:hover {
   border: solid 3px purple;
 }

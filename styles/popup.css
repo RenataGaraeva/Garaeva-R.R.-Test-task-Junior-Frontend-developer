@@ -1,0 +1,22 @@
+.closeBottonForPopup {
+  appearance: none;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: rgba(2, 91, 88, 1);
+  color: white;
+  width: 75px;
+  height: 38px;
+  box-shadow: 6px 5px black;
+}
+.popup::backdrop {
+  background-color: rgba(0 0 0 / 0.75);
+}
+
+.popup {
+  width: 410px;
+  min-height: 215px;
+  border: none;
+  box-shadow: 10px 10px black;
+  position: relative;
+}

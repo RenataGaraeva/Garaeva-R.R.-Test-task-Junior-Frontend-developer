@@ -14,4 +14,4 @@
 - Vite
 
 Ссылка на деплой:
-https://garaeva-r-r-test-task-junior-frontend-developer.vercel.app/
+https://garaeva-r-r-test-task-junior-frontend-developer-3ixkh5a2v.vercel.app/
